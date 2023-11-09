@@ -10,11 +10,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
   module: {
     rules: [
       {
@@ -24,7 +19,16 @@ module.exports = {
       {
         test: /\.ts$/,
         use: "ts-loader",
+        exclude: /node_modules/,
       },
     ],
   },
+  resolve: {
+    extensions: [".ts", ".js"],
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./public/index.html",
+    }),
+  ],
 };

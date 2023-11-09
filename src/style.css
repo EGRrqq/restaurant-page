@@ -1,3 +1,50 @@
+:root {
+  --content-padding: calc(0.5rem + max(0.5vh, 0.5vw));
+  --section-padding: clamp(1rem, calc(1.5rem + 1vw), 3vw);
+  --section-item-gap: calc(1rem + max(0.5vh, 0.5vw));
+
+  --main-font-size: calc(0.75rem + max(1vw, 1vh));
+}
+
+*,
+*::after,
+*::before {
+  border: 0;
+  padding: 0;
+  margin: 0;
+
+  font-size: var(--main-font-size);
+}
+
 body {
-  background: salmon;
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+}
+
+main {
+  display: grid;
+  width: 80%;
+  height: 80%;
+
+  border: 0.15rem dashed salmon;
+}
+
+section {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1rem, 0.1fr));
+  grid-template-rows: repeat(auto-fill, minmax(1rem, 0.1fr));
+
+  padding: var(--section-padding);
+}
+
+section > article {
+  display: grid;
+  place-self: center;
+  width: 100%;
+
+  background-color: #444;
+  color: aliceblue;
+
+  text-align: center;
 }

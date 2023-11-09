@@ -1,16 +1,16 @@
 {
-  "name": "restaurant-page",
-  "version": "1.0.0",
-  "private": "true",
-  "description": "poggers",
+  "name": "sweetyarn",
+  "private": true,
+  "packageManager": "yarn@4.0.1",
   "scripts": {
     "build": "webpack --progress --config webpack.dev.js",
-    "serve": "webpack serve --open --config webpack.prod.js"
+    "serve": "webpack serve --open --config webpack.prod.js",
+    "pages": "git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
-    "prettier": "3.0.3",
+    "prettier": "^3.0.3",
     "style-loader": "^3.3.3",
     "ts-loader": "^9.5.0",
     "typescript": "^5.2.2",

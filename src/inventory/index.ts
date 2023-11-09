@@ -1,0 +1,1 @@
+export { renderFoodItems } from "./renderItems";

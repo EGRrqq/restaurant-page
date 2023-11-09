@@ -1,8 +1,14 @@
+import { renderFoodItems } from "./inventory";
 import "./style.css";
 
-(function mylittlecomponent() {
-  let x: number;
+function mysweetcomponent() {
+  const main = document.createElement("main");
+  const section = document.createElement("section");
 
-  x = 2;
-  console.log(x);
-})();
+  renderFoodItems(section);
+  main.appendChild(section);
+
+  return main;
+}
+
+document.body.appendChild(mysweetcomponent());
