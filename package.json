@@ -1,7 +1,6 @@
 {
-  "name": "sweetyarn",
+  "name": "poggers",
   "private": true,
-  "packageManager": "yarn@4.0.1",
   "scripts": {
     "build": "webpack --progress --config webpack.dev.js",
     "serve": "webpack serve --open --config webpack.prod.js",
