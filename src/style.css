@@ -40,6 +40,16 @@ body {
   min-height: 100dvh;
 }
 
+.visually-hidden {
+  display: none !important;
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .menu-wrapper {
   display: flex;
   flex-direction: column;
@@ -69,20 +79,37 @@ body {
 
 .menu-tab > a {
   text-decoration: none;
+  width: 100%;
+  text-align: center;
 }
 
 .menu-content {
   flex: 1;
   display: flex;
+  flex-direction: column;
+  position: relative;
+
   border: 0.05rem solid;
 }
 
-.menu-content > section {
+.menu-content section {
   background: lightgray;
   flex: 1;
 }
 
+.content-wrapper {
+  display: flex;
+  flex: 1;
+}
+
 #right-menu-section {
-  flex-grow: 2;
   border-left: 0.05rem solid;
+}
+
+#quests #right-menu-section {
+  flex-grow: 2;
+}
+
+#character #right-menu-section {
+  flex-grow: 0.5;
 }
