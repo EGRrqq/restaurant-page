@@ -115,29 +115,17 @@ body {
 }
 
 .inventory {
-  --ayo: repeat(auto-fill, minmax(calc(var(--main-font-size) * 2), 1fr));
+  --cellSize: repeat(auto-fill, minmax(calc(var(--main-font-size) * 2), 1fr));
 
   display: grid;
-  grid-template-columns: var(--ayo);
-  grid-template-rows: var(--ayo);
+  grid-template-columns: var(--cellSize);
+  grid-template-rows: var(--cellSize);
   grid-auto-flow: dense;
   gap: 0.1rem;
 
   text-align: center;
   padding: var(--section-padding);
-
-  /* Add the following lines */
-  /* counter-reset: divs; */
 }
-
-/* .inventory::before { */
-/*   content: ""; */
-/*   counter-increment: divs; */
-/* } */
-/**/
-/* .inventory div::before { */
-/*   content: counter(divs); */
-/* } */
 
 .cell {
   background: salmon;
