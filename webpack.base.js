@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     index: "./src/index.ts",
     tabs: "./src/tabs/index.ts",
+    inventory: "./src/inventory/index.ts",
   },
   output: {
     filename: "[name].bundle.js",
