@@ -1,6 +1,8 @@
-import { findTabId, toggleWrapper } from "./helpers";
+import { sync } from "../inventory";
+import { findTabId, keyboardController, toggleWrapper } from "./helpers";
 
 (function init() {
+  new keyboardController();
   window.addEventListener("hashchange", tabChange);
 
   const getInitId = () => window.location.hash.slice(1);
@@ -18,4 +20,5 @@ function tabChange(event: HashChangeEvent) {
 
   toggleWrapper(oldWrapper);
   toggleWrapper(newWrapper);
+  sync();
 }

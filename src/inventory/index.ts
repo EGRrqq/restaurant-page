@@ -16,12 +16,15 @@ const inv3 = new inventory("#character #left-menu-section");
 })();
 
 function syncWithDelay() {
+  // When the current tab is not an inventory tab, styles are not computed,
+  // to compute it, add a small timeout
+
   setTimeout(() => {
     sync();
-  }, 1);
+  }, 5);
 }
 
-function sync() {
+export function sync() {
   inv1.syncCells();
   inv2.syncCells();
   inv3.syncCells();
