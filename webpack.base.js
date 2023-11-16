@@ -45,4 +45,8 @@ module.exports = {
       linkType: "text/css",
     }),
   ],
+  performance: {
+    maxAssetSize: 170000,
+    assetFilter: (asset) => { },
+  },
 };

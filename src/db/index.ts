@@ -26,7 +26,7 @@ const meals = [
 ]
   .sort(() => Math.random() - 0.5)
   .map((item, i) => {
-    item.initIndex = i;
+    item.positionIndex = i;
 
     return item;
   });

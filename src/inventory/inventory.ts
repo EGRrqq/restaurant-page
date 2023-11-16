@@ -90,15 +90,13 @@ export class store extends inventory {
     window.addEventListener("load", init);
   }
 
-  // need to extend class like restaurantInventory and playerInventory
-  // it is for restaurantInventory
   addMeals() {
     let i = 0;
     const length = getMeals().length;
 
-    const getInitIndex = () => getMeals()[i].initIndex;
+    const getPositionIndex = () => getMeals()[i].positionIndex;
     const getCurrentCell = () =>
-      this.getInventory.childNodes[parseInt(getInitIndex())] as HTMLElement;
+      this.getInventory.childNodes[parseInt(getPositionIndex())] as HTMLElement;
 
     while (i < length) {
       if (getCurrentCell()) {

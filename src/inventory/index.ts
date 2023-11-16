@@ -26,6 +26,7 @@ function syncWithDelay() {
 
 export function sync() {
   inv1.syncCells();
+  inv1.addMeals();
 
   inv2.syncCells();
   inv3.syncCells();

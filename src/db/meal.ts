@@ -1,7 +1,7 @@
 export default class meal {
   #src: string;
   #saturation: string;
-  #initIndex = "0";
+  #positionIndex = "0";
   #id = Math.random().toString(36).substring(2);
 
   constructor(src: string, saturation = 0) {
@@ -12,17 +12,19 @@ export default class meal {
   setMealAttributes(parent: HTMLElement) {
     parent.id = this.#id;
     parent.dataset.saturation = this.#saturation;
-    parent.dataset.position = this.#initIndex;
+    parent.dataset.position = this.#positionIndex;
+    parent.dataset.type = "food";
 
-    parent.style.background = `url(${this.#src
-      }) 100%/100% no-repeat, darkseagreen`;
+    parent.style.background = `url(${
+      this.#src
+    }) 100%/100% no-repeat, darkseagreen`;
   }
 
-  get initIndex(): string {
-    return this.#initIndex;
+  get positionIndex(): string {
+    return this.#positionIndex;
   }
 
-  set initIndex(value: number) {
-    this.#initIndex = value.toString();
+  set positionIndex(value: number) {
+    this.#positionIndex = value.toString();
   }
 }
