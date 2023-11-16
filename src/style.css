@@ -128,7 +128,13 @@ body {
 }
 
 .cell {
-  background: salmon;
+  display: flex;
+
+  background: darkseagreen;
   height: 100%;
   width: 100%;
+}
+
+.cell-over {
+  background: darkslategrey !important;
 }

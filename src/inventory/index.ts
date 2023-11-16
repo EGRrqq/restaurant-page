@@ -1,6 +1,6 @@
-import { inventory } from "./helpers";
+import inventory, { store } from "./inventory";
 
-const inv1 = new inventory("#store #left-menu-section");
+const inv1 = new store("#store #left-menu-section");
 const inv2 = new inventory("#store #right-menu-section");
 const inv3 = new inventory("#character #left-menu-section");
 
@@ -26,6 +26,7 @@ function syncWithDelay() {
 
 export function sync() {
   inv1.syncCells();
+
   inv2.syncCells();
   inv3.syncCells();
 }

@@ -1,5 +1,8 @@
-export class inventory {
-  #inventory;
+import { getMeals } from "../db";
+import cell from "./cell";
+
+export default class inventory {
+  #inventory: HTMLElement;
 
   constructor(query: string) {
     this.#inventory = document.querySelector(query);
@@ -48,9 +51,7 @@ export class inventory {
     let i = 0;
 
     while (i < cells) {
-      const div = document.createElement("div");
-      div.classList.add("cell");
-      this.getInventory.appendChild(div);
+      new cell(this.getInventory);
 
       i++;
     }
@@ -73,6 +74,38 @@ export class inventory {
 
     if (this.getCellsDifference > 0) {
       this.removeCells(Math.abs(this.getCellsDifference));
+    }
+  }
+}
+
+export class store extends inventory {
+  constructor(query: string) {
+    super(query);
+
+    const init = () => {
+      this.addMeals();
+      window.removeEventListener("load", init);
+    };
+
+    window.addEventListener("load", init);
+  }
+
+  // need to extend class like restaurantInventory and playerInventory
+  // it is for restaurantInventory
+  addMeals() {
+    let i = 0;
+    const length = getMeals().length;
+
+    const getInitIndex = () => getMeals()[i].initIndex;
+    const getCurrentCell = () =>
+      this.getInventory.childNodes[parseInt(getInitIndex())] as HTMLElement;
+
+    while (i < length) {
+      if (getCurrentCell()) {
+        getMeals()[i].setMealAttributes(getCurrentCell());
+      }
+
+      i++;
     }
   }
 }
