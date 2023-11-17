@@ -9,6 +9,7 @@ export default class inventory {
 
     const fillInventory = () => {
       this.syncCells();
+
       window.removeEventListener("load", fillInventory);
     };
 
@@ -47,11 +48,21 @@ export default class inventory {
     return this.getInitCells - this.getCells;
   }
 
+  get emptyCells() {
+    return document.querySelectorAll("article[data-type='empty']");
+  }
+
+  emptyCellsEvents() {
+    this.emptyCells.forEach((cell) =>
+      cell.addEventListener("click", () => console.log("clicked")),
+    );
+  }
+
   fillCells(cells: number) {
     let i = 0;
 
     while (i < cells) {
-      new cell(this.getInventory);
+      new cell().appendTo(this.getInventory);
 
       i++;
     }
@@ -67,8 +78,15 @@ export default class inventory {
     }
   }
 
+  syncEvents() {
+    if (this.getCellsDifference < 0) {
+      this.getInventory;
+    }
+  }
+
   syncCells() {
     if (this.getCellsDifference < 0) {
+      // this is the place to add events on resize
       this.fillCells(Math.abs(this.getCellsDifference));
     }
 
@@ -100,7 +118,7 @@ export class store extends inventory {
 
     while (i < length) {
       if (getCurrentCell()) {
-        getMeals()[i].setMealAttributes(getCurrentCell());
+        getMeals()[i].meal = getCurrentCell();
       }
 
       i++;

@@ -1,7 +1,7 @@
 import inventory, { store } from "./inventory";
 
-const inv1 = new store("#store #left-menu-section");
 const inv2 = new inventory("#store #right-menu-section");
+const inv1 = new store("#store #left-menu-section");
 const inv3 = new inventory("#character #left-menu-section");
 
 (function init() {
