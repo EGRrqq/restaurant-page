@@ -1,4 +1,3 @@
-import { sync } from "../inventory";
 import { findTabId, keyboardController, toggleWrapper } from "./helpers";
 
 (function init() {
@@ -20,5 +19,4 @@ function tabChange(event: HashChangeEvent) {
 
   toggleWrapper(oldWrapper);
   toggleWrapper(newWrapper);
-  sync();
 }

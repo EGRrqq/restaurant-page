@@ -13,6 +13,7 @@ const inv3 = new inventory("#character #left-menu-section");
     .addEventListener("click", syncWithDelay);
 
   window.addEventListener("resize", sync);
+  window.addEventListener("hashchange", syncWithDelay);
 })();
 
 function syncWithDelay() {
@@ -24,7 +25,7 @@ function syncWithDelay() {
   }, 5);
 }
 
-export function sync() {
+function sync() {
   inv1.syncCells();
   inv1.addMeals();
 
