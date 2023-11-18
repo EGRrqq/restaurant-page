@@ -1,5 +1,5 @@
 import { getMeals } from "../db";
-import cell from "./cell";
+import { emptyCell } from "./cells";
 
 export default class inventory {
   #inventory: HTMLElement;
@@ -52,7 +52,7 @@ export default class inventory {
     let i = 0;
 
     while (i < cells) {
-      new cell().appendTo(this.getInventory).setAttributes();
+      new emptyCell().appendTo(this.getInventory).setAttributes();
 
       i++;
     }
@@ -108,7 +108,7 @@ export class store extends inventory {
 
     while (i < length) {
       if (getCurrentCell()) {
-        getCurrentCell().replaceWith(getMeals()[i].setAttributes().meal);
+        getCurrentCell().replaceWith(getMeals()[i].setAttributes().cell);
 
         console.log("addMeal", i, getMeals()[i]);
       }
