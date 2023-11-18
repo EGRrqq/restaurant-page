@@ -47,15 +47,14 @@ export default class emptyCell extends cell {
 
     const getId = () => event.dataTransfer.getData("element/id");
     const getMeal = () => getMeals().find((meal) => meal.id === getId());
+    const initPos = getMeal().positionIndex;
 
     const mealElement = () =>
       getMeal().setPositionIndex(parseInt(this.positionIndex)).setAttributes()
         .cell;
 
     mealElement().replaceWith(
-      new emptyCell()
-        .setPositionIndex(parseInt(getMeal().positionIndex))
-        .setAttributes().cell,
+      new emptyCell().setPositionIndex(parseInt(initPos)).setAttributes().cell,
     );
 
     (event.target as HTMLElement).replaceWith(mealElement());

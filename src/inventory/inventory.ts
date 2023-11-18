@@ -68,15 +68,8 @@ export default class inventory {
     }
   }
 
-  syncEvents() {
-    if (this.getCellsDifference < 0) {
-      this.getInventory;
-    }
-  }
-
   syncCells() {
     if (this.getCellsDifference < 0) {
-      // this is the place to add events on resize
       this.fillCells(Math.abs(this.getCellsDifference));
     }
 
@@ -107,7 +100,7 @@ export class store extends inventory {
       this.getInventory.childNodes[parseInt(getPositionIndex())] as HTMLElement;
 
     while (i < length) {
-      if (getCurrentCell()) {
+      if (getCurrentCell() && getCurrentCell().dataset.type !== "food") {
         getCurrentCell().replaceWith(getMeals()[i].setAttributes().cell);
 
         console.log("addMeal", i, getMeals()[i]);
