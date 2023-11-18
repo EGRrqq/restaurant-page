@@ -45,10 +45,6 @@ const meals = [
   new meal(candy),
 ]
   .sort(() => Math.random() - 0.5)
-  .map((item, i) => {
-    item.positionIndex = i;
-
-    return item;
-  });
+  .map((item, i) => item.setPositionIndex(i));
 
 export const getMeals = () => meals;

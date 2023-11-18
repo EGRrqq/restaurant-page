@@ -1,46 +1,47 @@
-import cell from "../inventory/cell";
-
-export default class meal extends cell {
-  #node = document.createElement("article");
-
-  #src: string;
-  #saturation: string;
-  #positionIndex = "0";
+export default class meal {
+  #meal = document.createElement("article");
   #id = Math.random().toString(36).substring(2);
+  #positionIndex = "0";
 
-  constructor(src: string, saturation = 0) {
-    super();
+  constructor(src: string) {
+    this.meal.style.background = "darkcyan";
+    this.meal.dataset.type = "food";
+    this.meal.id = this.id;
 
-    this.dragInit(this.node);
-    this.#src = src;
-    this.#saturation = saturation.toString();
+    this.meal.setAttribute("draggable", "true");
+
+    this.meal.addEventListener("dragstart", this.cellDragStart);
   }
 
-  set meal(cell: HTMLElement) {
-    this.node.classList.add("cell");
-    this.node.id = this.#id;
-    this.node.dataset.saturation = this.#saturation;
-    this.node.dataset.position = this.#positionIndex;
-    this.node.dataset.type = "food";
-
-    this.node.style.background = this.style;
-
-    cell.replaceWith(this.node);
+  get meal() {
+    return this.#meal;
   }
 
-  get style() {
-    return `url(${this.#src}) 100%/100% no-repeat, darkseagreen`;
-  }
-
-  get node() {
-    return this.#node;
+  get id() {
+    return this.#id;
   }
 
   get positionIndex(): string {
     return this.#positionIndex;
   }
 
-  set positionIndex(value: number) {
+  setPositionIndex(value: number) {
     this.#positionIndex = value.toString();
+
+    return this;
+  }
+
+  setAttributes() {
+    this.meal.dataset.position = this.#positionIndex;
+
+    return this;
+  }
+
+  cellDragStart(event: DragEvent) {
+    event.dataTransfer.setData("element/id", (event.target as HTMLElement).id);
+
+    event.dataTransfer.effectAllowed = "move";
+
+    console.log(event.dataTransfer);
   }
 }

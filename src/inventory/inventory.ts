@@ -48,21 +48,11 @@ export default class inventory {
     return this.getInitCells - this.getCells;
   }
 
-  get emptyCells() {
-    return document.querySelectorAll("article[data-type='empty']");
-  }
-
-  emptyCellsEvents() {
-    this.emptyCells.forEach((cell) =>
-      cell.addEventListener("click", () => console.log("clicked")),
-    );
-  }
-
   fillCells(cells: number) {
     let i = 0;
 
     while (i < cells) {
-      new cell().appendTo(this.getInventory);
+      new cell().appendTo(this.getInventory).setAttributes();
 
       i++;
     }
@@ -118,7 +108,9 @@ export class store extends inventory {
 
     while (i < length) {
       if (getCurrentCell()) {
-        getMeals()[i].meal = getCurrentCell();
+        getCurrentCell().replaceWith(getMeals()[i].setAttributes().meal);
+
+        console.log("addMeal", i, getMeals()[i]);
       }
 
       i++;

@@ -26,6 +26,10 @@ function syncWithDelay() {
 }
 
 function sync() {
+  console.log("-----------------");
+  console.log("resize");
+  console.log("-----------------");
+
   inv1.syncCells();
   inv1.addMeals();
 
