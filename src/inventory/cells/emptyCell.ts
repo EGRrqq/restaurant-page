@@ -32,6 +32,12 @@ export default class emptyCell extends cell {
     return this;
   }
 
+  setParent() {
+    this.parent = this.cell.parentElement;
+
+    return this;
+  }
+
   cellDragOver(event: DragEvent) {
     event.preventDefault();
 
@@ -53,10 +59,7 @@ export default class emptyCell extends cell {
     const getVisitorMeal = () =>
       getVisitorMeals().find((meal) => meal.id === getId());
 
-    console.log("meal", getStoreMeal(), getVisitorMeal(), getId());
-
     if (!getStoreMeal()) {
-      console.log("push store", getVisitorMeal());
       getStoreMeals().push(getVisitorMeal());
 
       getVisitorMeals().splice(getVisitorMeals().indexOf(getStoreMeal()), 1);
@@ -69,19 +72,20 @@ export default class emptyCell extends cell {
         .setPositionIndex(parseInt(this.positionIndex))
         .setAttributes().cell;
 
+    const newCell = new emptyCell();
+
     mealElement().replaceWith(
-      new emptyCell().setPositionIndex(parseInt(initPos)).setAttributes().cell,
+      newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,
     );
+
+    newCell.setParent();
 
     (event.target as HTMLElement).replaceWith(mealElement());
 
     if (this.parent.dataset.type === "visitor") {
-      console.log("push visitor", getStoreMeal());
       getVisitorMeals().push(getStoreMeal());
 
       getStoreMeals().splice(getStoreMeals().indexOf(getStoreMeal()), 1);
     }
-
-    console.log("mealarr", getStoreMeals(), getVisitorMeals());
   };
 }
