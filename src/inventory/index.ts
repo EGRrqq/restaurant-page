@@ -33,10 +33,6 @@ function syncWithDelay() {
 }
 
 function sync() {
-  console.log("-----------------");
-  console.log("resize");
-  console.log("-----------------");
-
   storeInventory.syncCells().syncMeals();
   visitorInventorySt.syncCells().syncMeals();
 }

@@ -5,6 +5,9 @@ const getTabs = () =>
 
 const tabsId = [...getTabs()].map((node) => node.getAttribute("href").slice(1));
 
+const getVisitorInv = () =>
+  document.querySelector("section[data-type='visitor']");
+
 export const findTabId = (hash: string) =>
   tabsId.find((tab) => fuzzySearch(hash, tab)) || tabsId[0];
 
@@ -14,6 +17,14 @@ export function toggleWrapper(wrapper: HTMLElement) {
     "aria-hidden",
     wrapper.classList.contains("visually-hidden").toString(),
   );
+}
+
+export function toggleVisitorInv(id: string, wrapper: HTMLElement) {
+  if (id === "quests") return;
+
+  if (![...wrapper.childNodes].includes(getVisitorInv())) {
+    wrapper.appendChild(getVisitorInv());
+  }
 }
 
 export class keyboardController {

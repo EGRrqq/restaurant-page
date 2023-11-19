@@ -122,8 +122,6 @@ export class inventoryWithItems extends inventory {
     while (i < length) {
       if (getCurrentCell() && getCurrentCell().dataset.type !== "food") {
         getCurrentCell().replaceWith(this.db()[i].setAttributes().cell);
-
-        console.log(this.getInventory.dataset.type, i, this.db()[i]);
       }
 
       i++;
