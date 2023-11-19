@@ -1,4 +1,4 @@
-import { getMeals } from "../../db";
+import { getStoreMeals, getVisitorMeals } from "../../db";
 import cell from "./cell";
 
 export default class emptyCell extends cell {
@@ -46,12 +46,28 @@ export default class emptyCell extends cell {
     (event.target as HTMLElement).classList.remove("cell-over");
 
     const getId = () => event.dataTransfer.getData("element/id");
-    const getMeal = () => getMeals().find((meal) => meal.id === getId());
-    const initPos = getMeal().positionIndex;
+
+    const getStoreMeal = () =>
+      getStoreMeals().find((meal) => meal.id === getId());
+
+    const getVisitorMeal = () =>
+      getVisitorMeals().find((meal) => meal.id === getId());
+
+    console.log("meal", getStoreMeal(), getVisitorMeal(), getId());
+
+    if (!getStoreMeal()) {
+      console.log("push store", getVisitorMeal());
+      getStoreMeals().push(getVisitorMeal());
+
+      getVisitorMeals().splice(getVisitorMeals().indexOf(getStoreMeal()), 1);
+    }
+
+    const initPos = getStoreMeal().positionIndex;
 
     const mealElement = () =>
-      getMeal().setPositionIndex(parseInt(this.positionIndex)).setAttributes()
-        .cell;
+      getStoreMeal()
+        .setPositionIndex(parseInt(this.positionIndex))
+        .setAttributes().cell;
 
     mealElement().replaceWith(
       new emptyCell().setPositionIndex(parseInt(initPos)).setAttributes().cell,
@@ -59,6 +75,13 @@ export default class emptyCell extends cell {
 
     (event.target as HTMLElement).replaceWith(mealElement());
 
-    console.log(getMeals(), mealElement());
+    if (this.parent.dataset.type === "visitor") {
+      console.log("push visitor", getStoreMeal());
+      getVisitorMeals().push(getStoreMeal());
+
+      getStoreMeals().splice(getStoreMeals().indexOf(getStoreMeal()), 1);
+    }
+
+    console.log("mealarr", getStoreMeals(), getVisitorMeals());
   };
 }

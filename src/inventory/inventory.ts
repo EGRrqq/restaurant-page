@@ -1,12 +1,9 @@
-import { getMeals } from "../db";
-import { emptyCell } from "./cells";
+import { emptyCell, mealCell } from "./cells";
 
 export default class inventory {
-  #inventory: HTMLElement;
+  #inventory = document.createElement("section");
 
-  constructor(query: string) {
-    this.#inventory = document.querySelector(query);
-
+  constructor() {
     const fillInventory = () => {
       this.syncCells();
 
@@ -76,34 +73,57 @@ export default class inventory {
     if (this.getCellsDifference > 0) {
       this.removeCells(Math.abs(this.getCellsDifference));
     }
+
+    return this;
+  }
+
+  appendTo(parent: HTMLElement) {
+    parent.appendChild(this.getInventory);
+
+    return this;
+  }
+
+  classList(...classes: string[]) {
+    this.getInventory.classList.add(...classes);
+
+    return this;
   }
 }
 
-export class store extends inventory {
-  constructor(query: string) {
-    super(query);
+export class inventoryWithItems extends inventory {
+  #db: () => mealCell[];
+
+  constructor(type: string, db: () => mealCell[]) {
+    super();
+
+    this.getInventory.dataset.type = type;
+    this.#db = db;
 
     const init = () => {
-      this.addMeals();
+      this.syncMeals();
       window.removeEventListener("load", init);
     };
 
     window.addEventListener("load", init);
   }
 
-  addMeals() {
-    let i = 0;
-    const length = getMeals().length;
+  get db() {
+    return this.#db;
+  }
 
-    const getPositionIndex = () => getMeals()[i].positionIndex;
+  syncMeals() {
+    let i = 0;
+    const length = this.db().length;
+
+    const getPositionIndex = () => this.db()[i].positionIndex;
     const getCurrentCell = () =>
       this.getInventory.childNodes[parseInt(getPositionIndex())] as HTMLElement;
 
     while (i < length) {
       if (getCurrentCell() && getCurrentCell().dataset.type !== "food") {
-        getCurrentCell().replaceWith(getMeals()[i].setAttributes().cell);
+        getCurrentCell().replaceWith(this.db()[i].setAttributes().cell);
 
-        console.log("addMeal", i, getMeals()[i]);
+        console.log(this.getInventory.dataset.type, i, this.db()[i]);
       }
 
       i++;

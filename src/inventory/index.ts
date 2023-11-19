@@ -1,8 +1,15 @@
-import inventory, { store } from "./inventory";
+import { getStoreMeals, getVisitorMeals } from "../db";
+import { inventoryWithItems } from "./inventory";
 
-const inv1 = new store("#store #left-menu-section");
-const inv2 = new inventory("#store #right-menu-section");
-const inv3 = new inventory("#character #left-menu-section");
+const storeContentWrapper = () => document.getElementById("store");
+
+const storeInventory = new inventoryWithItems("store", getStoreMeals)
+  .appendTo(storeContentWrapper())
+  .classList("inventory");
+
+const visitorInventorySt = new inventoryWithItems("visitor", getVisitorMeals)
+  .appendTo(storeContentWrapper())
+  .classList("inventory");
 
 (function init() {
   document
@@ -30,9 +37,6 @@ function sync() {
   console.log("resize");
   console.log("-----------------");
 
-  inv1.syncCells();
-  inv1.addMeals();
-
-  inv2.syncCells();
-  inv3.syncCells();
+  storeInventory.syncCells().syncMeals();
+  visitorInventorySt.syncCells().syncMeals();
 }

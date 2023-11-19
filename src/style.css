@@ -114,6 +114,10 @@ body {
   flex-grow: 0.5;
 }
 
+#character {
+  flex-direction: row-reverse;
+}
+
 .inventory {
   --cellSize: repeat(auto-fill, minmax(calc(var(--main-font-size) * 2), 1fr));
 
