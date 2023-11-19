@@ -10,9 +10,15 @@ export default class emptyCell extends cell {
     this.cell.classList.add("cell");
     this.cell.dataset.type = "empty";
 
+    this.cell.setAttribute("draggable", "false");
+
     this.cell.addEventListener("dragover", this.cellDragOver);
     this.cell.addEventListener("dragleave", this.cellDragLeave);
     this.cell.addEventListener("drop", this.cellDragDrop);
+
+    // even if I set the draggable parameter to false, it can somehow drag,
+    // so I need to use an event that prevents dragging by default
+    this.cell.addEventListener("dragstart", (event) => event.preventDefault());
   }
 
   get parent() {
