@@ -6,7 +6,7 @@ export default class mealCell extends cell {
   constructor(src: string) {
     super();
 
-    this.cell.style.background = "darkcyan";
+    this.cell.style.background = `url(${src}) 100%/100% no-repeat, darkseagreen`;
     this.cell.dataset.type = "food";
     this.cell.id = this.id;
 
