@@ -93,8 +93,10 @@ body {
 }
 
 .menu-content section {
-  background: lightgray;
   flex: 1;
+  padding: var(--section-padding);
+
+  background: lightgray;
 }
 
 .content-wrapper {
@@ -110,16 +112,12 @@ body {
   flex-grow: 2;
 }
 
-#character #right-menu-section {
-  flex-grow: 0.5;
-}
-
 #character {
   flex-direction: row-reverse;
 }
 
 .inventory {
-  --cellSize: repeat(auto-fill, minmax(calc(var(--main-font-size) * 2), 1fr));
+  --cellSize: repeat(auto-fill, minmax(calc(var(--main-font-size) * 2.5), 1fr));
 
   display: grid;
   grid-template-columns: var(--cellSize);
@@ -128,7 +126,6 @@ body {
   gap: 0.1rem;
 
   text-align: center;
-  padding: var(--section-padding);
 }
 
 .cell {
@@ -141,4 +138,14 @@ body {
 
 .cell-over {
   background: darkslategrey !important;
+}
+
+@media screen and (max-width: 639px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  #character {
+    flex-direction: column-reverse;
+  }
 }
