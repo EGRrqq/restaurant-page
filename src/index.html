@@ -12,21 +12,45 @@
     <header class="menu-header">
       <ul>
         <li class="menu-tab"><a href="#quests">quests</a></li>
-        <li class="menu-tab"><a href="#store">store</a></li>
-        <li class="menu-tab"><a href="#character">character</a></li>
+        <li class="menu-tab"><a href="#store">kitchen</a></li>
+        <li class="menu-tab"><a href="#character">pet</a></li>
       </ul>
     </header>
 
     <main class="menu-content">
       <div class="content-wrapper visually-hidden" aria-hidden="true" id="quests">
-        <section id="left-menu-section">quest</section>
-        <section id="right-menu-section">ayo</section>
+        <section id="left-menu-section">
+          <ul>
+            <li>The Hungry Pet</li>
+          </ul>
+        </section>
+
+        <section id="right-menu-section">
+          <details open="">
+            <summary>Description</summary>
+            Help us! It's a day off and our restaurant is full of customers.
+            We don't have time to feed the animal
+          </details>
+
+          <details open="">
+            <summary>Objectives</summary>
+            Get food from the kitchen and feed the pet
+          </details>
+        </section>
       </div>
 
       <div class="content-wrapper visually-hidden" aria-hidden="true" id="store"></div>
 
       <div class="content-wrapper visually-hidden" aria-hidden="true" id="character">
-        <section id="right-menu-section">walter</section>
+        <section id="right-menu-section">
+          <img src="<%= require('../public/character/4x.webp') %>" draggable="false" alt="cat spinning"
+            class="character" />
+
+          <div class="satiety-wrapper">
+            <label for="saturation">satiety</label>
+            <progress id="saturation" max="100" value="25">25%</progress>
+          </div>
+        </section>
       </div>
     </main>
   </div>
