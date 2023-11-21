@@ -46,6 +46,7 @@ export default class emptyCell extends cell {
 
   cellDragOver(event: DragEvent) {
     event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
 
     (event.target as HTMLElement).classList.add("cell-over");
   }
