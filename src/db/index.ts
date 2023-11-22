@@ -1,2 +1,2 @@
-export { getStoreMeals } from "./storeData";
-export { getVisitorMeals } from "./visitorData";
+export { getStoreMeals, getStoreMeal } from "./storeData";
+export { getVisitorMeals, getVisitorMeal } from "./visitorData";

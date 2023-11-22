@@ -49,3 +49,5 @@ const meals = [
   .map((item, i) => item.setPositionIndex(i));
 
 export const getStoreMeals = () => meals;
+export const getStoreMeal = (id: string) =>
+  getStoreMeals().find((meal) => meal.id === id);

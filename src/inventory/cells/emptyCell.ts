@@ -1,4 +1,9 @@
-import { getStoreMeals, getVisitorMeals } from "../../db";
+import {
+  getStoreMeal,
+  getStoreMeals,
+  getVisitorMeal,
+  getVisitorMeals,
+} from "../../db";
 import cell from "./cell";
 
 export default class emptyCell extends cell {
@@ -60,22 +65,19 @@ export default class emptyCell extends cell {
 
     const getId = () => event.dataTransfer.getData("element/id");
 
-    const getStoreMeal = () =>
-      getStoreMeals().find((meal) => meal.id === getId());
+    if (!getStoreMeal(getId())) {
+      getStoreMeals().push(getVisitorMeal(getId()));
 
-    const getVisitorMeal = () =>
-      getVisitorMeals().find((meal) => meal.id === getId());
-
-    if (!getStoreMeal()) {
-      getStoreMeals().push(getVisitorMeal());
-
-      getVisitorMeals().splice(getVisitorMeals().indexOf(getStoreMeal()), 1);
+      getVisitorMeals().splice(
+        getVisitorMeals().indexOf(getStoreMeal(getId())),
+        1,
+      );
     }
 
-    const initPos = getStoreMeal().positionIndex;
+    const initPos = getStoreMeal(getId()).positionIndex;
 
     const mealElement = () =>
-      getStoreMeal()
+      getStoreMeal(getId())
         .setPositionIndex(parseInt(this.positionIndex))
         .setAttributes().cell;
 
@@ -90,9 +92,9 @@ export default class emptyCell extends cell {
     (event.target as HTMLElement).replaceWith(mealElement());
 
     if (this.parent.dataset.type === "visitor") {
-      getVisitorMeals().push(getStoreMeal());
+      getVisitorMeals().push(getStoreMeal(getId()));
 
-      getStoreMeals().splice(getStoreMeals().indexOf(getStoreMeal()), 1);
+      getStoreMeals().splice(getStoreMeals().indexOf(getStoreMeal(getId())), 1);
     }
   };
 }
