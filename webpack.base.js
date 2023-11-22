@@ -29,8 +29,27 @@ module.exports = {
         type: "asset/resource",
       },
       {
+        test: /\.(png|webp|jpg|jpeg|gif)$/i,
+        type: "asset/resource",
+      },
+      {
         test: /\.svg$/,
         type: "asset/inline",
+      },
+      {
+        test: /\.html$/i,
+        loader: "html-loader",
+        options: {
+          sources: {
+            list: [
+              {
+                tag: "img",
+                attribute: "src",
+                type: "src",
+              },
+            ],
+          },
+        },
       },
     ],
   },
