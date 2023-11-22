@@ -160,6 +160,20 @@ img.character {
   gap: var(--section-item-gap);
 }
 
+#swap-btn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  cursor: pointer;
+}
+
+.select-cell {
+  outline: 0.15rem solid darkslateblue;
+  outline-offset: -0.15rem;
+}
+
 @media screen and (max-width: 639px) {
   .content-wrapper {
     flex-direction: column;

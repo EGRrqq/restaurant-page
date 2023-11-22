@@ -1,3 +1,10 @@
+import {
+  getStoreMeal,
+  getStoreMeals,
+  getSwapMeals,
+  getVisitorMeal,
+  getVisitorMeals,
+} from "../../db";
 import cell from "./cell";
 
 export default class mealCell extends cell {
@@ -13,6 +20,7 @@ export default class mealCell extends cell {
     this.cell.setAttribute("draggable", "true");
 
     this.cell.addEventListener("dragstart", this.cellDragStart);
+    this.cell.addEventListener("click", this.cellClick);
   }
 
   get id() {
@@ -26,4 +34,42 @@ export default class mealCell extends cell {
 
     console.log(event.dataTransfer);
   }
+
+  cellClick = (event: Event) => {
+    const findArray = (id: string) =>
+      [getStoreMeals(), getVisitorMeals()].filter((arr) =>
+        arr.find((meal) => meal.id === id),
+      )[0];
+
+    const getMeal = (id: string) =>
+      findArray(id).find((meal) => meal.id === id);
+
+    const getSwapBtn = () =>
+      document.getElementById("swap-btn") as HTMLButtonElement;
+
+    if (this.cell.dataset.select) {
+      if (this.cell.parentElement.dataset.type !== "store") return;
+
+      (event.target as HTMLElement).removeAttribute("data-select");
+      (event.target as HTMLElement).classList.toggle("select-cell");
+
+      getSwapMeals().splice(getSwapMeals().indexOf(this, 1));
+      if (!getSwapMeals().length) {
+        getSwapBtn().setAttribute("disabled", "true");
+      }
+
+      console.log("dataset", getSwapMeals());
+    } else {
+      if (this.cell.parentElement.dataset.type !== "store") return;
+
+      (event.target as HTMLElement).dataset.select = "true";
+      (event.target as HTMLElement).classList.toggle("select-cell");
+
+      getSwapMeals().push(this);
+      if (getSwapBtn().disabled) {
+        getSwapBtn().removeAttribute("disabled");
+      }
+      console.log(getSwapMeals());
+    }
+  };
 }
