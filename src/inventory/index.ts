@@ -67,6 +67,7 @@ function swapBtnInit() {
       getVisitorMeals().push(meal);
       getStoreMeals().splice(getStoreMeals().indexOf(meal), 1);
     });
+
     resetSwapMeals();
 
     console.log("after", getSwapMeals(), getStoreMeals(), getVisitorMeals());

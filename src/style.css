@@ -55,7 +55,6 @@ body {
   flex-direction: column;
   gap: calc(var(--section-item-gap) / 2);
 
-  border: 0.15rem solid;
   margin: var(--section-padding);
 }
 

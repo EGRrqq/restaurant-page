@@ -1,10 +1,4 @@
-import {
-  getStoreMeal,
-  getStoreMeals,
-  getSwapMeals,
-  getVisitorMeal,
-  getVisitorMeals,
-} from "../../db";
+import { getSwapMeals } from "../../db";
 import cell from "./cell";
 
 export default class mealCell extends cell {
@@ -36,14 +30,6 @@ export default class mealCell extends cell {
   }
 
   cellClick = (event: Event) => {
-    const findArray = (id: string) =>
-      [getStoreMeals(), getVisitorMeals()].filter((arr) =>
-        arr.find((meal) => meal.id === id),
-      )[0];
-
-    const getMeal = (id: string) =>
-      findArray(id).find((meal) => meal.id === id);
-
     const getSwapBtn = () =>
       document.getElementById("swap-btn") as HTMLButtonElement;
 

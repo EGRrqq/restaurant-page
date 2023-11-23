@@ -21,6 +21,8 @@ export default class emptyCell extends cell {
     this.cell.addEventListener("dragleave", this.cellDragLeave);
     this.cell.addEventListener("drop", this.cellDragDrop);
 
+    this.cell.addEventListener("drop", this.touchmove, { passive: true });
+
     // even if I set the draggable parameter to false, it can somehow drag,
     // so I need to use an event that prevents dragging by default
     this.cell.addEventListener("dragstart", (event) => event.preventDefault());
@@ -48,6 +50,11 @@ export default class emptyCell extends cell {
 
     return this;
   }
+
+  touchmove = (event: TouchEvent) => {
+    // event.preventDefault();
+    console.log("touch", event, this);
+  };
 
   cellDragOver(event: DragEvent) {
     event.preventDefault();
