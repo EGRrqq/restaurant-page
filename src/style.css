@@ -113,7 +113,7 @@ body {
   flex-grow: 2;
 }
 
-#character {
+#pet {
   flex-direction: row-reverse;
 }
 
@@ -141,7 +141,7 @@ body {
   background: darkslategrey !important;
 }
 
-#character #right-menu-section {
+#pet #right-menu-section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -178,7 +178,7 @@ img.character {
     flex-direction: column;
   }
 
-  #character {
+  #pet {
     flex-direction: column-reverse;
   }
 

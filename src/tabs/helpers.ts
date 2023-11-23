@@ -20,7 +20,7 @@ export function toggleWrapper(wrapper: HTMLElement) {
 }
 
 export function toggleVisitorInv(id: string, wrapper: HTMLElement) {
-  if (findTabId(id) !== "character" && findTabId(id) !== "store") return;
+  if (findTabId(id) !== "pet" && findTabId(id) !== "kitchen") return;
 
   if (![...wrapper.childNodes].includes(getVisitorInv())) {
     wrapper.appendChild(getVisitorInv());

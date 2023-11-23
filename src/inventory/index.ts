@@ -7,7 +7,7 @@ import {
 import { emptyCell } from "./cells";
 import { inventoryWithItems } from "./inventory";
 
-const storeContentWrapper = () => document.getElementById("store");
+const storeContentWrapper = () => document.getElementById("kitchen");
 
 const storeInventory = new inventoryWithItems("store", getStoreMeals)
   .appendTo(storeContentWrapper())
