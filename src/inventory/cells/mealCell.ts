@@ -38,6 +38,7 @@ export default class mealCell extends cell {
 
   cellProgressClick = () => {
     if (this.cell.parentElement.dataset.type === "store") return;
+    if (this.cell.closest(".content-wrapper").id !== "pet") return;
 
     const getProgress = () => document.querySelector("progress");
 
