@@ -41,8 +41,6 @@ function swapBtnInit() {
     ) as HTMLElement;
 
   if (getSwapMeals().length && getEmptyCell()) {
-    console.log("before", getSwapMeals(), getStoreMeals(), getVisitorMeals());
-
     getSwapMeals().forEach((meal) => {
       meal.cell.removeAttribute("data-select");
       meal.cell.classList.remove("select-cell");
@@ -69,7 +67,5 @@ function swapBtnInit() {
     });
 
     resetSwapMeals();
-
-    console.log("after", getSwapMeals(), getStoreMeals(), getVisitorMeals());
   }
 }
