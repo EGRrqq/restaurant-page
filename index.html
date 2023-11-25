@@ -11,9 +11,13 @@
   <div class="menu-wrapper">
     <header class="menu-header">
       <ul>
-        <li class="menu-tab"><a href="#quests">quests</a></li>
-        <li class="menu-tab"><a href="#kitchen">kitchen</a></li>
-        <li class="menu-tab"><a href="#pet">pet</a></li>
+        <li class="menu-tab">
+          <a href="#quests" draggable="false">quests</a>
+        </li>
+        <li class="menu-tab">
+          <a href="#kitchen" draggable="false">kitchen</a>
+        </li>
+        <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
       </ul>
     </header>
 
@@ -34,7 +38,14 @@
 
           <details open="">
             <summary>Objectives</summary>
-            Get food from the kitchen and feed the pet
+            <ol>
+              <li class="not-completed" id="getfood">
+                Get food from the kitchen
+                <br />
+                <em>(may be spoiled)</em>
+              </li>
+              <li class="not-completed" id="feedpet">feed the pet</li>
+            </ol>
           </details>
         </section>
       </div>
