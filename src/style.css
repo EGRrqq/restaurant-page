@@ -4,6 +4,24 @@
   --section-item-gap: calc(1rem + max(0.5vh, 0.5vw));
 
   --main-font-size: calc(0.75rem + max(1vw, 1vh));
+
+  --cold-warm: radial-gradient(
+      60% 65.43% at 50% 50%,
+      #e96363 5%,
+      rgba(2, 2, 2, 0) 100%
+    ),
+    #4376f8;
+
+  --warm-cold: radial-gradient(
+      60% 65.43% at 50% 50%,
+      #4376f8 5%,
+      rgba(2, 2, 2, 0) 125%
+    ),
+    #e96363;
+
+  --main-bg-color: #4a4a4a;
+  --main-text-color: cornsilk;
+  --accent-text-color: #6fff6c;
 }
 
 @font-face {
@@ -38,8 +56,9 @@
 
 body {
   display: grid;
-
   min-height: 100dvh;
+
+  background: var(--cold-warm);
 }
 
 .visually-hidden {
@@ -73,14 +92,16 @@ body {
 
   list-style: none;
 
-  background: lightgray;
+  background: var(--main-bg-color);
   border: 0.05rem solid;
 }
 
 .menu-tab > a {
-  text-decoration: none;
   width: 100%;
+
+  text-decoration: none;
   text-align: center;
+  color: var(--accent-text-color);
 }
 
 .menu-content {
@@ -90,22 +111,20 @@ body {
   position: relative;
 
   border: 0.05rem solid;
+  background-color: var(--main-text-color);
 }
 
 .menu-content section {
   flex: 1;
   padding: var(--section-padding);
 
-  background: lightgray;
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
 }
 
 .content-wrapper {
   display: flex;
   flex: 1;
-}
-
-#right-menu-section {
-  border-left: 0.05rem solid;
 }
 
 #quests {
@@ -159,6 +178,8 @@ body {
   flex-direction: column;
   justify-content: space-between;
   gap: var(--section-item-gap);
+
+  border-left: 0.05rem solid;
 }
 
 img.character {
@@ -169,7 +190,7 @@ img.character {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: var(--section-item-gap);
+  gap: calc(var(--section-item-gap) / 2);
 }
 
 #swap-btn {
@@ -186,6 +207,35 @@ img.character {
   outline-offset: -0.15rem;
 }
 
+progress::-moz-progress-bar {
+  background: #f99e12;
+}
+
+progress::-webkit-progress-value {
+  background: #f99e12;
+}
+
+progress {
+  color: #f99e12;
+}
+
+#left-menu-section li {
+  list-style: none;
+  text-align: center;
+}
+
+#right-menu-section li {
+  list-style: inside;
+}
+
+.not-completed::marker {
+  color: crimson;
+}
+
+.completed::marker {
+  color: var(--accent-text-color);
+}
+
 @media screen and (max-width: 639px) {
   .content-wrapper {
     flex-direction: column;
@@ -195,7 +245,7 @@ img.character {
     flex-direction: column-reverse;
   }
 
-  #right-menu-section {
+  #pet #right-menu-section {
     border-left: 0;
     border-top: 0.05rem solid;
   }

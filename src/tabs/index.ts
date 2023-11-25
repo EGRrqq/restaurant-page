@@ -3,6 +3,7 @@ import {
   keyboardController,
   toggleWrapper,
   toggleVisitorInv,
+  toggleBodyBg,
 } from "./helpers";
 
 window.addEventListener("DOMContentLoaded", init);
@@ -14,6 +15,7 @@ function init() {
   const getInitId = () => window.location.hash.slice(1);
   const wrapper = document.getElementById(findTabId(getInitId()));
 
+  toggleBodyBg(getInitId());
   toggleVisitorInv(getInitId(), wrapper);
   toggleWrapper(wrapper);
 
@@ -27,6 +29,7 @@ function tabChange(event: HashChangeEvent) {
   const oldWrapper = document.getElementById(findTabId(getOldId()));
   const newWrapper = document.getElementById(findTabId(getNewId()));
 
+  toggleBodyBg(getNewId());
   toggleVisitorInv(getNewId(), newWrapper);
 
   toggleWrapper(oldWrapper);

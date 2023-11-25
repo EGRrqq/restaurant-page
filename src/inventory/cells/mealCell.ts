@@ -60,6 +60,11 @@ export default class mealCell extends cell {
       getVisitorMeals().indexOf(getVisitorMeal(this.id)),
       1,
     );
+
+    if (getProgress().value >= 100) {
+      document.getElementById("feedpet").classList.remove("not-completed");
+      document.getElementById("feedpet").classList.add("completed");
+    }
   };
 
   cellSwapClick = (event: Event) => {

@@ -27,6 +27,18 @@ export function toggleVisitorInv(id: string, wrapper: HTMLElement) {
   }
 }
 
+export function toggleBodyBg(id: string) {
+  switch (findTabId(id)) {
+    case "kitchen":
+      document.body.style.background = "var(--warm-cold)";
+      break;
+
+    default:
+      document.body.style.background = "var(--cold-warm)";
+      break;
+  }
+}
+
 export class keyboardController {
   constructor() {
     window.addEventListener("keydown", (event) => {
