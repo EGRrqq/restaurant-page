@@ -61,7 +61,22 @@ export default class mealCell extends cell {
       1,
     );
 
+    const getFoodTask = () => document.getElementById("getfood");
+
+    if (
+      !getVisitorMeals().length &&
+      !getFoodTask().classList.contains("not-completed")
+    ) {
+      document.getElementById("getfood").classList.remove("completed");
+      document.getElementById("getfood").classList.add("not-completed");
+    }
+
     if (getProgress().value >= 100) {
+      if (getFoodTask().classList.contains("not-completed")) {
+        document.getElementById("getfood").classList.remove("not-completed");
+        document.getElementById("getfood").classList.add("completed");
+      }
+
       document.getElementById("feedpet").classList.remove("not-completed");
       document.getElementById("feedpet").classList.add("completed");
     }

@@ -104,10 +104,26 @@ export default class emptyCell extends cell {
 
     if (this.parent.dataset.type === "visitor") {
       getVisitorMeals().push(getStoreMeal(getId()));
-      document.getElementById("getfood").classList.remove("not-completed");
-      document.getElementById("getfood").classList.add("completed");
 
       getStoreMeals().splice(getStoreMeals().indexOf(getStoreMeal(getId())), 1);
+    }
+
+    const getFoodTask = () => document.getElementById("getfood");
+
+    if (
+      getVisitorMeals().length &&
+      getFoodTask().classList.contains("not-completed")
+    ) {
+      document.getElementById("getfood").classList.remove("not-completed");
+      document.getElementById("getfood").classList.add("completed");
+    }
+
+    if (
+      !getVisitorMeals().length &&
+      !getFoodTask().classList.contains("not-completed")
+    ) {
+      document.getElementById("getfood").classList.remove("completed");
+      document.getElementById("getfood").classList.add("not-completed");
     }
   };
 }

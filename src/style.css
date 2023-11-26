@@ -5,6 +5,8 @@
 
   --main-font-size: calc(0.75rem + max(1vw, 1vh));
 
+  --inventory-gap: 0.3rem;
+
   --cold-warm: radial-gradient(
       60% 65.43% at 50% 50%,
       #e96363 5%,
@@ -66,6 +68,7 @@ body {
   min-height: 100dvh;
 
   background: var(--cold-warm);
+  transition: background-color 0.05s ease-in-out;
 }
 
 .visually-hidden {
@@ -94,7 +97,8 @@ body {
 
 .menu-tab {
   display: flex;
-  place-content: center;
+  justify-content: center;
+  align-items: center;
   flex: 1;
 
   list-style: none;
@@ -224,7 +228,7 @@ body {
   grid-template-columns: var(--cellSize);
   grid-template-rows: var(--cellSize);
   grid-auto-flow: dense;
-  gap: 0.1rem;
+  gap: var(--inventory-gap);
 
   text-align: center;
 }
@@ -269,8 +273,8 @@ img.character {
 }
 
 .select-cell {
-  outline: 0.15rem solid darkslateblue;
-  outline-offset: -0.15rem;
+  outline: var(--inventory-gap) solid var(--main-text-color);
+  outline-offset: calc(-1 * var(--inventory-gap));
 }
 
 progress::-moz-progress-bar {
