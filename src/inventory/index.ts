@@ -11,7 +11,8 @@ const storeContentWrapper = () => document.getElementById("kitchen");
 
 const storeInventory = new inventoryWithItems("store", getStoreMeals)
   .appendTo(storeContentWrapper())
-  .classList("inventory");
+  .classList("inventory")
+  .setId("left-menu-section");
 
 const visitorInventorySt = new inventoryWithItems("visitor", getVisitorMeals)
   .appendTo(storeContentWrapper())

@@ -88,6 +88,12 @@ export default class inventory {
 
     return this;
   }
+
+  setId(value: string) {
+    this.getInventory.id = value;
+
+    return this;
+  }
 }
 
 export class inventoryWithItems extends inventory {

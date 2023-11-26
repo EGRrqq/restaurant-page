@@ -22,19 +22,25 @@ export function toggleWrapper(wrapper: HTMLElement) {
 export function toggleVisitorInv(id: string, wrapper: HTMLElement) {
   if (findTabId(id) !== "pet" && findTabId(id) !== "kitchen") return;
 
+  findTabId(id) === "pet"
+    ? (getVisitorInv().id = "left-menu-section")
+    : (getVisitorInv().id = "right-menu-section");
+
   if (![...wrapper.childNodes].includes(getVisitorInv())) {
     wrapper.appendChild(getVisitorInv());
   }
 }
 
-export function toggleBodyBg(id: string) {
+export function toggleTemp(id: string) {
   switch (findTabId(id)) {
     case "kitchen":
       document.body.style.background = "var(--warm-cold)";
+      document.querySelector("header").dataset.temp = "warm";
       break;
 
     default:
       document.body.style.background = "var(--cold-warm)";
+      document.querySelector("header").dataset.temp = "cold";
       break;
   }
 }

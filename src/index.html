@@ -1,71 +1,86 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Hungry Pet</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Hungry Pet</title>
-</head>
+  <body>
+    <div class="menu-wrapper">
+      <header class="menu-header" data-temp="cold">
+        <ul>
+          <li class="menu-tab">
+            <a href="#quests" draggable="false">quests</a>
+          </li>
+          <li class="menu-tab">
+            <a href="#kitchen" draggable="false">kitchen</a>
+          </li>
+          <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
+        </ul>
+      </header>
 
-<body>
-  <div class="menu-wrapper">
-    <header class="menu-header">
-      <ul>
-        <li class="menu-tab">
-          <a href="#quests" draggable="false">quests</a>
-        </li>
-        <li class="menu-tab">
-          <a href="#kitchen" draggable="false">kitchen</a>
-        </li>
-        <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
-      </ul>
-    </header>
+      <main class="menu-content">
+        <div
+          class="content-wrapper visually-hidden"
+          aria-hidden="true"
+          id="quests"
+        >
+          <section id="left-menu-section">
+            <ul>
+              <li>The Hungry Pet</li>
+            </ul>
+          </section>
 
-    <main class="menu-content">
-      <div class="content-wrapper visually-hidden" aria-hidden="true" id="quests">
-        <section id="left-menu-section">
-          <ul>
-            <li>The Hungry Pet</li>
-          </ul>
-        </section>
+          <section id="right-menu-section">
+            <details open="">
+              <summary>Description</summary>
+              Help us! It's a day off and our restaurant is full of customers.
+              We don't have time to feed the pet
+            </details>
 
-        <section id="right-menu-section">
-          <details open="">
-            <summary>Description</summary>
-            Help us! It's a day off and our restaurant is full of customers.
-            We don't have time to feed the pet
-          </details>
+            <details open="">
+              <summary>Objectives</summary>
+              <ol>
+                <li class="not-completed" id="getfood">
+                  Get food from the kitchen
+                  <br />
+                  <em>(may be spoiled)</em>
+                </li>
+                <li class="not-completed" id="feedpet">Feed the pet</li>
+              </ol>
+            </details>
+          </section>
+        </div>
 
-          <details open="">
-            <summary>Objectives</summary>
-            <ol>
-              <li class="not-completed" id="getfood">
-                Get food from the kitchen
-                <br />
-                <em>(may be spoiled)</em>
-              </li>
-              <li class="not-completed" id="feedpet">feed the pet</li>
-            </ol>
-          </details>
-        </section>
-      </div>
+        <div
+          class="content-wrapper visually-hidden"
+          aria-hidden="true"
+          id="kitchen"
+        >
+          <button id="swap-btn" disabled>yo</button>
+        </div>
 
-      <div class="content-wrapper visually-hidden" aria-hidden="true" id="kitchen">
-        <button id="swap-btn" disabled>yo</button>
-      </div>
+        <div
+          class="content-wrapper visually-hidden"
+          aria-hidden="true"
+          id="pet"
+        >
+          <section id="right-menu-section">
+            <img
+              src="../public/character/4x.webp"
+              draggable="false"
+              alt="cat spinning"
+              class="character"
+            />
 
-      <div class="content-wrapper visually-hidden" aria-hidden="true" id="pet">
-        <section id="right-menu-section">
-          <img src="../public/character/4x.webp" draggable="false" alt="cat spinning" class="character" />
-
-          <div class="satiety-wrapper">
-            <label for="saturation">satiety</label>
-            <progress id="saturation" max="100" value="25">25%</progress>
-          </div>
-        </section>
-      </div>
-    </main>
-  </div>
-</body>
-
+            <div class="satiety-wrapper">
+              <label for="saturation">satiety</label>
+              <progress id="saturation" max="100" value="25">25%</progress>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </body>
 </html>
