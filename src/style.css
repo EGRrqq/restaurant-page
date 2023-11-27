@@ -311,7 +311,8 @@ progress {
 }
 
 #right-menu-section li::before {
-  content: "\23FA";
+  content: "\25CF";
+  min-width: var(--main-font-size);
 }
 
 #right-menu-section li[data-task="completed"]::before {
@@ -331,16 +332,27 @@ ol {
 summary {
   list-style: none;
   display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+  align-items: flex-end;
+  gap: calc(var(--section-item-gap) / 2);
+  text-align: center;
 }
 
 details[open] summary::before {
-  content: "\2BC6";
+  content: "\25BC";
+  min-width: var(--main-font-size);
 }
 
 details summary::before {
-  content: "\2BC8";
+  content: "\25B6";
+  min-width: var(--main-font-size);
+}
+
+.details-text-wrapper {
+  padding-top: calc(var(--section-item-gap) / 2);
+}
+
+span.details-text-wrapper {
+  padding-left: 0.25rem;
 }
 
 @media screen and (max-width: 639px) {
