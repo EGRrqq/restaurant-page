@@ -310,12 +310,8 @@ progress {
   text-align: center;
 }
 
-#right-menu-section li {
-  list-style: none;
-}
-
 #right-menu-section li::before {
-  content: "\2022\0020";
+  content: "\23FA";
 }
 
 #right-menu-section li[data-task="completed"]::before {
@@ -324,6 +320,27 @@ progress {
 
 #right-menu-section li[data-task="not-completed"]::before {
   color: crimson;
+}
+
+details,
+ol {
+  display: grid;
+}
+
+#right-menu-section li,
+summary {
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+details[open] summary::before {
+  content: "\2BC6";
+}
+
+details summary::before {
+  content: "\2BC8";
 }
 
 @media screen and (max-width: 639px) {
