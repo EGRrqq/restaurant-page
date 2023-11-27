@@ -66,8 +66,7 @@ function swapBtnInit() {
       getVisitorMeals().push(meal);
       getStoreMeals().splice(getStoreMeals().indexOf(meal), 1);
 
-      document.getElementById("getfood").classList.remove("not-completed");
-      document.getElementById("getfood").classList.add("completed");
+      document.getElementById("getfood").dataset.task = "completed";
     });
 
     resetSwapMeals();

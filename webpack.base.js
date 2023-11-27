@@ -65,10 +65,7 @@ module.exports = {
     }),
   ],
   performance: {
-    maxAssetSize: 170000,
-    assetFilter: (asset) => {},
-  },
-  devServer: {
-    allowedHosts: [".hjw8xc-8080.csb.app"], // <  Copy and paste the domain from the URL Codebox provides for your runtime here
-  },
+    maxAssetSize: 300000,
+    assetFilter: (asset) => { },
+  }
 };

@@ -9,7 +9,7 @@ export default class mealCell extends cell {
   constructor(src: string, satiety: number) {
     super();
 
-    this.cell.style.background = `url(${src}) 100%/100% no-repeat, darkseagreen`;
+    this.cell.style.background = `url(${src}) 50% center/90% no-repeat, darkseagreen`;
     this.cell.dataset.type = "food";
     this.cell.classList.add("meal");
     this.cell.id = this.id;
@@ -65,20 +65,17 @@ export default class mealCell extends cell {
 
     if (
       !getVisitorMeals().length &&
-      !getFoodTask().classList.contains("not-completed")
+      getFoodTask().dataset.task === "completed"
     ) {
-      document.getElementById("getfood").classList.remove("completed");
-      document.getElementById("getfood").classList.add("not-completed");
+      document.getElementById("getfood").dataset.task = "not-completed";
     }
 
     if (getProgress().value >= 100) {
-      if (getFoodTask().classList.contains("not-completed")) {
-        document.getElementById("getfood").classList.remove("not-completed");
-        document.getElementById("getfood").classList.add("completed");
+      if (getFoodTask().dataset.task === "not-completed") {
+        document.getElementById("getfood").dataset.task = "completed";
       }
 
-      document.getElementById("feedpet").classList.remove("not-completed");
-      document.getElementById("feedpet").classList.add("completed");
+      document.getElementById("feedpet").dataset.task = "completed";
     }
   };
 

@@ -112,18 +112,16 @@ export default class emptyCell extends cell {
 
     if (
       getVisitorMeals().length &&
-      getFoodTask().classList.contains("not-completed")
+      getFoodTask().dataset.task === "not-completed"
     ) {
-      document.getElementById("getfood").classList.remove("not-completed");
-      document.getElementById("getfood").classList.add("completed");
+      document.getElementById("getfood").dataset.task = "completed";
     }
 
     if (
       !getVisitorMeals().length &&
-      !getFoodTask().classList.contains("not-completed")
+      getFoodTask().dataset.task === "completed"
     ) {
-      document.getElementById("getfood").classList.remove("completed");
-      document.getElementById("getfood").classList.add("not-completed");
+      document.getElementById("getfood").dataset.task = "not-completed";
     }
   };
 }
