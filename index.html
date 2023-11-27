@@ -1,86 +1,69 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Hungry Pet</title>
-  <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script><script defer src="tabs.bundle.js"></script><script defer src="inventory.bundle.js"></script><link href="index.css" rel="stylesheet"></head>
 
-  <body>
-    <div class="menu-wrapper">
-      <header class="menu-header" data-temp="cold">
-        <ul>
-          <li class="menu-tab">
-            <a href="#quests" draggable="false">quests</a>
-          </li>
-          <li class="menu-tab">
-            <a href="#kitchen" draggable="false">kitchen</a>
-          </li>
-          <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
-        </ul>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hungry Pet</title>
+<script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script><script defer src="tabs.bundle.js"></script><script defer src="inventory.bundle.js"></script><link href="index.css" rel="stylesheet"></head>
 
-      <main class="menu-content">
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="quests"
-        >
-          <section id="left-menu-section">
-            <ul>
-              <li>The Hungry Pet</li>
-            </ul>
-          </section>
+<body>
+  <div class="menu-wrapper">
+    <header class="menu-header" data-temp="cold">
+      <ul>
+        <li class="menu-tab">
+          <a href="#quests" draggable="false">quests</a>
+        </li>
+        <li class="menu-tab">
+          <a href="#kitchen" draggable="false">kitchen</a>
+        </li>
+        <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
+      </ul>
+    </header>
 
-          <section id="right-menu-section">
-            <details open="">
-              <summary>Description</summary>
-              Help us! It's a day off and our restaurant is full of customers.
-              We don't have time to feed the pet
-            </details>
+    <main class="menu-content">
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="quests">
+        <section id="left-menu-section">
+          <ul>
+            <li>The Hungry Pet</li>
+          </ul>
+        </section>
 
-            <details open="">
-              <summary>Objectives</summary>
-              <ol>
-                <li data-task="not-completed" id="getfood">
-                  Get food from the kitchen
-                  <br />
-                  <em>(may be spoiled)</em>
-                </li>
-                <li data-task="not-completed" id="feedpet">Feed the pet</li>
-              </ol>
-            </details>
-          </section>
-        </div>
+        <section id="right-menu-section">
+          <details open="">
+            <summary>Description</summary>
+            Help us! Today is a day off and our restaurant is full of
+            customers. Please feed our animal any food you can find in the
+            kitchen. But be careful, there's some spoiled food left over. Good
+            luck!
+          </details>
 
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="kitchen"
-        >
-          <button id="swap-btn" disabled></button>
-        </div>
+          <details open="">
+            <summary>Objectives</summary>
+            <ol>
+              <li data-task="not-completed" id="getfood">Get food</li>
+              <li data-task="not-completed" id="feedpet">Feed the pet</li>
+            </ol>
+          </details>
+        </section>
+      </div>
 
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="pet"
-        >
-          <section id="right-menu-section">
-            <img
-              src="794d579af8992b261913.webp"
-              draggable="false"
-              alt="cat spinning"
-              class="character"
-            />
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="kitchen">
+        <button id="swap-btn" disabled></button>
+      </div>
 
-            <div class="satiety-wrapper">
-              <label for="saturation">satiety</label>
-              <progress id="saturation" max="100" value="25">25%</progress>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-  </body>
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="pet">
+        <section id="right-menu-section">
+          <img src="794d579af8992b261913.webp" draggable="false" alt="cat spinning" class="character" />
+
+          <div class="satiety-wrapper">
+            <label for="saturation">satiety</label>
+            <progress id="saturation" max="100" value="25">25%</progress>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+
 </html>
