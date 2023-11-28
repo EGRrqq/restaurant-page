@@ -28,6 +28,10 @@
   --main-text-color: cornsilk;
   --accent-text-color: #6fff6c;
 
+  --cell-color: darkseagreen;
+  --cell-over-color: darkslategrey;
+  --cell-select-color: var(--main-text-color);
+
   --border-radius-size: 0.3rem;
   --border-size: 0.15rem;
   --outer-shadow-rb: 4px 4px 4px 0px rgba(0, 0, 0, 0.5);
@@ -61,6 +65,7 @@
 
   font-size: var(--main-font-size);
   letter-spacing: 0.05rem;
+  line-height: 1.25;
 }
 
 body {
@@ -236,13 +241,17 @@ body {
 .cell {
   display: flex;
 
-  background: darkseagreen;
+  background: var(--cell-color);
   height: 100%;
   width: 100%;
 }
 
+.meal {
+  cursor: grab;
+}
+
 .cell-over {
-  background: darkslategrey !important;
+  background: var(--cell-over-color) !important;
 }
 
 #pet #right-menu-section {
@@ -253,13 +262,15 @@ body {
 }
 
 img.character {
-  flex: 1;
+  width: 100%;
+  height: 100%;
 }
 
 .satiety-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: center;
   gap: calc(var(--section-item-gap) / 2);
 }
 
@@ -267,6 +278,8 @@ img.character {
   background:
     url("../public/btn/arrow-right-disabled.svg") 100% center / 100% no-repeat,
     var(--main-bg-color);
+
+  cursor: not-allowed;
 }
 
 #swap-btn {
@@ -289,7 +302,7 @@ img.character {
 }
 
 .select-cell {
-  outline: var(--inventory-gap) solid var(--main-text-color);
+  outline: var(--inventory-gap) solid var(--cell-select-color);
   outline-offset: calc(-1 * var(--inventory-gap));
 }
 
@@ -347,12 +360,14 @@ details summary::before {
   min-width: var(--main-font-size);
 }
 
-.details-text-wrapper {
-  padding-top: calc(var(--section-item-gap) / 2);
-}
-
 span.details-text-wrapper {
   padding-left: 0.25rem;
+  padding-top: calc(var(--section-item-gap) / 3);
+}
+
+ol.details-text-wrapper {
+  gap: 0.25rem;
+  padding-top: calc(var(--section-item-gap) / 3.5);
 }
 
 @media screen and (max-width: 639px) {

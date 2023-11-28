@@ -91,13 +91,17 @@ export default class emptyCell extends cell {
 
     newCell.setParent();
 
-    mealElement().classList.remove("select-cell");
-    if (getSwapMeal(getId())) {
-      getSwapMeals().splice(getSwapMeals().indexOf(getSwapMeal(getId())), 1);
-    }
+    if (this.parent.dataset.type === "visitor") {
+      mealElement().classList.remove("select-cell");
+      mealElement().removeAttribute("data-select");
 
-    if (!getSwapMeals().length) {
-      document.getElementById("swap-btn").setAttribute("disabled", "true");
+      if (getSwapMeal(getId())) {
+        getSwapMeals().splice(getSwapMeals().indexOf(getSwapMeal(getId())), 1);
+      }
+
+      if (!getSwapMeals().length) {
+        document.getElementById("swap-btn").setAttribute("disabled", "true");
+      }
     }
 
     (event.target as HTMLElement).replaceWith(mealElement());
