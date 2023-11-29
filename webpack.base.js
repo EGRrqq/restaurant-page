@@ -33,6 +33,10 @@ module.exports = {
         type: "asset/resource",
       },
       {
+        test: /\.(ogg|mp3|wav)$/i,
+        type: "asset/resource",
+      },
+      {
         test: /\.svg$/,
         type: "asset/inline",
       },
@@ -66,6 +70,6 @@ module.exports = {
   ],
   performance: {
     maxAssetSize: 300000,
-    assetFilter: (asset) => { },
-  }
+    assetFilter: (asset) => {},
+  },
 };
