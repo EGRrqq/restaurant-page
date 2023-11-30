@@ -1,4 +1,10 @@
-import { getSwapMeals, getVisitorMeal, getVisitorMeals } from "../../db";
+import {
+  getStoreMeals,
+  getSwapMeals,
+  getVisitorMeal,
+  getVisitorMeals,
+} from "../../db";
+import { eatPlaySound, selectPlaySound } from "../soundController";
 import cell from "./cell";
 import emptyCell from "./emptyCell";
 
@@ -18,7 +24,7 @@ export default class mealCell extends cell {
     this.cell.setAttribute("draggable", "true");
 
     this.cell.addEventListener("dragstart", this.cellDragStart);
-    this.cell.addEventListener("click", this.cellSwapClick);
+    this.cell.addEventListener("click", this.cellSelectClick);
     this.cell.addEventListener("click", this.cellProgressClick);
   }
 
@@ -50,6 +56,7 @@ export default class mealCell extends cell {
 
     const newCell = new emptyCell();
 
+    eatPlaySound();
     this.cell.replaceWith(
       newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,
     );
@@ -77,15 +84,20 @@ export default class mealCell extends cell {
 
       document.getElementById("feedpet").dataset.task = "completed";
     }
+
+    if (!getStoreMeals().length && !getVisitorMeals().length) {
+      document.getElementById("getfood").dataset.task = "completed";
+    }
   };
 
-  cellSwapClick = (event: Event) => {
+  cellSelectClick = (event: Event) => {
     const getSwapBtn = () =>
       document.getElementById("swap-btn") as HTMLButtonElement;
 
     if (this.cell.dataset.select) {
       if (this.cell.parentElement.dataset.type !== "store") return;
 
+      selectPlaySound();
       (event.target as HTMLElement).removeAttribute("data-select");
       (event.target as HTMLElement).classList.toggle("select-cell");
 
@@ -96,6 +108,7 @@ export default class mealCell extends cell {
     } else {
       if (this.cell.parentElement.dataset.type !== "store") return;
 
+      selectPlaySound();
       (event.target as HTMLElement).dataset.select = "true";
       (event.target as HTMLElement).classList.toggle("select-cell");
 

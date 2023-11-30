@@ -1,8 +1,11 @@
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
-module.exports = {
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
   entry: {
     index: "./src/index.ts",
     tabs: "./src/tabs/index.ts",
@@ -51,6 +54,11 @@ module.exports = {
                 attribute: "src",
                 type: "src",
               },
+              {
+                tag: "source",
+                attribute: "src",
+                type: "src",
+              },
             ],
           },
         },
@@ -70,6 +78,6 @@ module.exports = {
   ],
   performance: {
     maxAssetSize: 300000,
-    assetFilter: (asset) => {},
+    assetFilter: (asset) => { },
   },
 };

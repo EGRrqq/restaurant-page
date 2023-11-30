@@ -1,7 +1,7 @@
-const { merge } = require("webpack-merge");
-const base = require("./webpack.base.js");
+import { merge } from "webpack-merge";
+import base from "./webpack.base.mjs";
 
-module.exports = merge(base, {
+export default merge(base, {
   mode: "development",
   devtool: "inline-source-map",
   devServer: {

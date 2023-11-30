@@ -5,7 +5,9 @@ import {
   resetSwapMeals,
 } from "../db";
 import { emptyCell } from "./cells";
+import { characterInit } from "./character";
 import { inventoryWithItems } from "./inventory";
+import { equipPlaySound } from "./soundController";
 
 const storeContentWrapper = () => document.getElementById("kitchen");
 
@@ -26,6 +28,7 @@ function init() {
   window.addEventListener("resize", sync);
   window.addEventListener("hashchange", sync);
   getSwapBtn().addEventListener("click", swapBtnInit);
+  characterInit();
 
   window.removeEventListener("DOMContentLoaded", init);
 }
@@ -55,6 +58,7 @@ function swapBtnInit() {
           .setAttributes().cell;
 
       const newCell = new emptyCell();
+      equipPlaySound();
 
       mealElement().replaceWith(
         newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,

@@ -1,9 +1,10 @@
 {
   "name": "poggers",
+  "type": "module",
   "private": true,
   "scripts": {
-    "build": "webpack --progress --config webpack.dev.js",
-    "serve": "webpack serve --open --config webpack.prod.js",
+    "build": "webpack --progress --config webpack.dev.mjs",
+    "serve": "webpack serve --open --config webpack.prod.mjs",
     "pages": "git subtree push --prefix dist origin gh-pages"
   },
   "devDependencies": {
