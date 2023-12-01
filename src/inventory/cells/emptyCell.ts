@@ -6,7 +6,7 @@ import {
   getVisitorMeal,
   getVisitorMeals,
 } from "../../db";
-import { equipPlaySound } from "../soundController";
+import { getEquipSound } from "../soundController";
 import cell from "./cell";
 
 export default class emptyCell extends cell {
@@ -86,7 +86,7 @@ export default class emptyCell extends cell {
 
     const newCell = new emptyCell();
 
-    equipPlaySound();
+    getEquipSound().play();
     mealElement().replaceWith(
       newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,
     );

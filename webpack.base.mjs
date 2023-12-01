@@ -78,6 +78,6 @@ export default {
   ],
   performance: {
     maxAssetSize: 300000,
-    assetFilter: (asset) => { },
+    assetFilter: (asset) => {},
   },
 };

@@ -4,6 +4,8 @@ import {
   toggleWrapper,
   toggleVisitorInv,
   toggleTemp,
+  toggleTabSounds,
+  toggleBgSound,
 } from "./helpers";
 
 window.addEventListener("DOMContentLoaded", init);
@@ -15,6 +17,7 @@ function init() {
   const getInitId = () => window.location.hash.slice(1);
   const wrapper = document.getElementById(findTabId(getInitId()));
 
+  toggleBgSound(getInitId());
   toggleTemp(getInitId());
   toggleVisitorInv(getInitId(), wrapper);
   toggleWrapper(wrapper);
@@ -31,6 +34,11 @@ function tabChange(event: HashChangeEvent) {
 
   toggleTemp(getNewId());
   toggleVisitorInv(getNewId(), newWrapper);
+
+  if (getOldId() !== getNewId()) {
+    toggleBgSound(getNewId());
+    toggleTabSounds(getNewId());
+  }
 
   toggleWrapper(oldWrapper);
   toggleWrapper(newWrapper);

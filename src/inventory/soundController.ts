@@ -1,4 +1,6 @@
 import {
+  doorClosingSound,
+  doorOpeneningSound,
   eatSound,
   equipSound,
   meowSound,
@@ -9,24 +11,35 @@ const selectSoundEl = new Audio(selectSound);
 const equipSoundEl = new Audio(equipSound);
 const meowSoundEl = new Audio(meowSound);
 const eatSoundEl = new Audio(eatSound);
+const openDoorSoundEl = new Audio(doorOpeneningSound);
+const closeDoorSoundEl = new Audio(doorClosingSound);
 
-const getSelectSound = () => selectSoundEl;
-const getEquipSound = () => equipSoundEl;
-const getMeowSound = () => meowSoundEl;
-const getEatSound = () => eatSoundEl;
+openDoorSoundEl.volume = 0.15;
+closeDoorSoundEl.volume = 0.05;
 
-export const selectPlaySound = () => {
-  getSelectSound().play();
+export const getSelectSound = () => selectSoundEl;
+export const getEquipSound = () => equipSoundEl;
+export const getMeowSound = () => meowSoundEl;
+export const getEatSound = () => eatSoundEl;
+export const getTalkSound = () =>
+  document.getElementById("bg-sound") as HTMLAudioElement;
+export const getOpenDoorSound = () => openDoorSoundEl;
+export const getCloseDoorSound = () => closeDoorSoundEl;
+
+getTalkSound().volume = 0.25;
+const bgAudioCtx = new AudioContext();
+const bgSource = bgAudioCtx.createMediaElementSource(getTalkSound());
+const bgEq = bgAudioCtx.createBiquadFilter();
+
+export const connectBgEq = () => {
+  bgSource.disconnect();
+  bgEq.type = "bandpass";
+
+  bgSource.connect(bgEq);
+  bgEq.connect(bgAudioCtx.destination);
 };
 
-export const equipPlaySound = () => {
-  getEquipSound().play();
-};
-
-export const meowPlaySound = () => {
-  getMeowSound().play();
-};
-
-export const eatPlaySound = () => {
-  getEatSound().play();
+export const disconnectBgEq = () => {
+  bgEq.disconnect();
+  bgSource.connect(bgAudioCtx.destination);
 };

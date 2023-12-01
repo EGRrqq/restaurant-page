@@ -4,7 +4,7 @@ import {
   getVisitorMeal,
   getVisitorMeals,
 } from "../../db";
-import { eatPlaySound, selectPlaySound } from "../soundController";
+import { getEatSound, getSelectSound } from "../soundController";
 import cell from "./cell";
 import emptyCell from "./emptyCell";
 
@@ -56,7 +56,7 @@ export default class mealCell extends cell {
 
     const newCell = new emptyCell();
 
-    eatPlaySound();
+    getEatSound().play();
     this.cell.replaceWith(
       newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,
     );
@@ -97,7 +97,7 @@ export default class mealCell extends cell {
     if (this.cell.dataset.select) {
       if (this.cell.parentElement.dataset.type !== "store") return;
 
-      selectPlaySound();
+      getSelectSound().play();
       (event.target as HTMLElement).removeAttribute("data-select");
       (event.target as HTMLElement).classList.toggle("select-cell");
 
@@ -108,7 +108,7 @@ export default class mealCell extends cell {
     } else {
       if (this.cell.parentElement.dataset.type !== "store") return;
 
-      selectPlaySound();
+      getSelectSound().play();
       (event.target as HTMLElement).dataset.select = "true";
       (event.target as HTMLElement).classList.toggle("select-cell");
 

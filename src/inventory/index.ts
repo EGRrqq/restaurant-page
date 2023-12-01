@@ -7,7 +7,7 @@ import {
 import { emptyCell } from "./cells";
 import { characterInit } from "./character";
 import { inventoryWithItems } from "./inventory";
-import { equipPlaySound } from "./soundController";
+import { getEquipSound } from "./soundController";
 
 const storeContentWrapper = () => document.getElementById("kitchen");
 
@@ -58,7 +58,7 @@ function swapBtnInit() {
           .setAttributes().cell;
 
       const newCell = new emptyCell();
-      equipPlaySound();
+      getEquipSound().play();
 
       mealElement().replaceWith(
         newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,

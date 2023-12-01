@@ -1,3 +1,9 @@
+import {
+  connectBgEq,
+  disconnectBgEq,
+  getCloseDoorSound,
+  getOpenDoorSound,
+} from "../inventory/soundController";
 import { fuzzySearch } from "../utils";
 
 const getTabs = () =>
@@ -10,6 +16,42 @@ const getVisitorInv = () =>
 
 export const findTabId = (hash: string) =>
   tabsId.find((tab) => fuzzySearch(hash, tab)) || tabsId[0];
+
+export function toggleBgSound(id: string) {
+  switch (findTabId(id)) {
+    case "kitchen":
+      disconnectBgEq();
+      break;
+    default:
+      connectBgEq();
+      break;
+  }
+}
+
+export function toggleTabSounds(id: string) {
+  switch (findTabId(id)) {
+    case "kitchen":
+      if (getCloseDoorSound().currentTime && !getCloseDoorSound().paused) {
+        getCloseDoorSound().pause();
+        getCloseDoorSound().currentTime = 0;
+      }
+
+      getOpenDoorSound().play();
+      break;
+    case "quests":
+    case "pet":
+      if (getOpenDoorSound().currentTime && !getOpenDoorSound().paused) {
+        getOpenDoorSound().pause();
+        getOpenDoorSound().currentTime = 0;
+      }
+
+      getCloseDoorSound().play();
+      break;
+
+    default:
+      break;
+  }
+}
 
 export function toggleWrapper(wrapper: HTMLElement) {
   wrapper.classList.toggle("visually-hidden");

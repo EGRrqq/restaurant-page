@@ -1,6 +1,6 @@
 import { getVisitorMeal, getVisitorMeals } from "../db";
 import { emptyCell } from "./cells";
-import { eatPlaySound, meowPlaySound } from "./soundController";
+import { getEatSound, getMeowSound } from "./soundController";
 
 const getCharacter = () => document.querySelector(".character-wrapper");
 const getProgress = () => document.querySelector("progress");
@@ -16,7 +16,7 @@ function characterDragOver(event: DragEvent) {
 
   if (getProgress().value <= 0 || getProgress().value >= 100) return;
 
-  meowPlaySound();
+  getMeowSound().play();
 }
 
 function characterDragDrop(event: DragEvent) {
@@ -35,7 +35,7 @@ function characterDragDrop(event: DragEvent) {
 
   const newCell = new emptyCell();
 
-  eatPlaySound();
+  getEatSound().play();
   getVisitorMeal(getId()).cell.replaceWith(
     newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,
   );
