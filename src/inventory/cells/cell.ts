@@ -1,5 +1,3 @@
-import { selectSound, equipSound } from "../../../public/sounds";
-
 export default class cell {
   #cell = document.createElement("article");
   #positionIndex = "0";

@@ -98,10 +98,11 @@ export default class mealCell extends cell {
       if (this.cell.parentElement.dataset.type !== "store") return;
 
       getSelectSound().play();
+
       (event.target as HTMLElement).removeAttribute("data-select");
       (event.target as HTMLElement).classList.toggle("select-cell");
 
-      getSwapMeals().splice(getSwapMeals().indexOf(this, 1));
+      getSwapMeals().splice(getSwapMeals().indexOf(this), 1);
       if (!getSwapMeals().length) {
         getSwapBtn().setAttribute("disabled", "true");
       }
@@ -109,6 +110,7 @@ export default class mealCell extends cell {
       if (this.cell.parentElement.dataset.type !== "store") return;
 
       getSelectSound().play();
+
       (event.target as HTMLElement).dataset.select = "true";
       (event.target as HTMLElement).classList.toggle("select-cell");
 

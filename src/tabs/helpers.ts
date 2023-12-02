@@ -28,9 +28,13 @@ export function toggleBgSound(id: string) {
   }
 }
 
-export function toggleTabSounds(id: string) {
-  switch (findTabId(id)) {
+export function toggleTabSounds(newId: string, oldId: string) {
+  switch (findTabId(newId)) {
     case "kitchen":
+      if (findTabId(oldId) === findTabId(newId)) {
+        break;
+      }
+
       if (getCloseDoorSound().currentTime && !getCloseDoorSound().paused) {
         getCloseDoorSound().pause();
         getCloseDoorSound().currentTime = 0;
@@ -38,8 +42,18 @@ export function toggleTabSounds(id: string) {
 
       getOpenDoorSound().play();
       break;
-    case "quests":
+    case "quest":
     case "pet":
+      if (
+        (findTabId(oldId) === "pet" && findTabId(newId) === "quest") ||
+        (findTabId(oldId) === "quest" && findTabId(newId) === "pet") ||
+        (findTabId(oldId) === "" && findTabId(newId) === "quest") ||
+        (findTabId(oldId) === "" && findTabId(newId) === "pet") ||
+        findTabId(oldId) === findTabId(newId)
+      ) {
+        break;
+      }
+
       if (getOpenDoorSound().currentTime && !getOpenDoorSound().paused) {
         getOpenDoorSound().pause();
         getOpenDoorSound().currentTime = 0;

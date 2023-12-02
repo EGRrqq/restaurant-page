@@ -1,17 +1,17 @@
-import equipSound from "./item-equip-6904.mp3";
-import doorClosingSound from "./door-closing-18398.wav";
-import doorOpeneningSound from "./door-opening-18398.wav";
-import peopleTalkingSound from "./people-talking-in-small-room-6064.mp3";
-import selectSound from "./select-sound-121244.mp3";
+import doorClosingSound from "./door-closing.mp3";
+import doorOpeneningSound from "./door-opening.mp3";
+import peopleTalkingSound from "./people-talking-in-small-room.mp3";
+import selectSound from "./select.mp3";
+import pickUpSound from "./pick-up.mp3";
 import meowSound from "./cat-89108.wav";
-import eatSound from "./munch-sound-effect.mp3";
+import eatSound from "./munch.mp3";
 
 export {
-  equipSound,
   doorClosingSound,
   doorOpeneningSound,
   peopleTalkingSound,
   selectSound,
   meowSound,
   eatSound,
+  pickUpSound,
 };

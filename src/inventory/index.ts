@@ -7,7 +7,7 @@ import {
 import { emptyCell } from "./cells";
 import { characterInit } from "./character";
 import { inventoryWithItems } from "./inventory";
-import { getEquipSound } from "./soundController";
+import { getPickUpSound } from "./soundController";
 
 const storeContentWrapper = () => document.getElementById("kitchen");
 
@@ -20,7 +20,8 @@ const visitorInventorySt = new inventoryWithItems("visitor", getVisitorMeals)
   .appendTo(storeContentWrapper())
   .classList("inventory");
 
-const getSwapBtn = () => document.getElementById("swap-btn");
+const getSwapBtn = () =>
+  document.getElementById("swap-btn") as HTMLButtonElement;
 
 window.addEventListener("DOMContentLoaded", init);
 
@@ -29,6 +30,9 @@ function init() {
   window.addEventListener("hashchange", sync);
   getSwapBtn().addEventListener("click", swapBtnInit);
   characterInit();
+
+  // because firefox can save disabled=false after a reload
+  getSwapBtn().disabled = true;
 
   window.removeEventListener("DOMContentLoaded", init);
 }
@@ -58,7 +62,7 @@ function swapBtnInit() {
           .setAttributes().cell;
 
       const newCell = new emptyCell();
-      getEquipSound().play();
+      getPickUpSound().play();
 
       mealElement().replaceWith(
         newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,

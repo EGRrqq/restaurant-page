@@ -35,10 +35,8 @@ function tabChange(event: HashChangeEvent) {
   toggleTemp(getNewId());
   toggleVisitorInv(getNewId(), newWrapper);
 
-  if (getOldId() !== getNewId()) {
-    toggleBgSound(getNewId());
-    toggleTabSounds(getNewId());
-  }
+  toggleBgSound(getNewId());
+  toggleTabSounds(getNewId(), getOldId());
 
   toggleWrapper(oldWrapper);
   toggleWrapper(newWrapper);

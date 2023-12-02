@@ -198,7 +198,7 @@ body {
   border: var(--border-size) solid var(--warm);
 }
 
-#quests {
+#quest {
   background-color: var(--cold);
 
   display: grid;
@@ -206,7 +206,7 @@ body {
   gap: calc(var(--section-item-gap) / 2);
 }
 
-#quests #left-menu-section {
+#quest #left-menu-section {
   grid-area: 1;
 
   border-radius: var(--border-radius-size);
@@ -214,7 +214,7 @@ body {
   border-right: 0;
 }
 
-#quests #right-menu-section {
+#quest #right-menu-section {
   grid-area: 1 / span 2;
 
   display: flex;
@@ -381,18 +381,18 @@ ol.details-text-wrapper {
 }
 
 @media screen and (max-width: 639px) {
-  #quests {
+  #quest {
     grid-template-columns: 1fr;
     grid-template-rows: 0.1fr 1fr;
 
     gap: 0;
   }
 
-  #quests #left-menu-section {
+  #quest #left-menu-section {
     border: var(--border-size) solid var(--cold);
   }
 
-  #quests #right-menu-section {
+  #quest #right-menu-section {
     grid-area: 2;
 
     border: var(--border-size) solid var(--cold);
