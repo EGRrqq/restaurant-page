@@ -28,8 +28,8 @@
   --main-text-color: cornsilk;
   --accent-text-color: #6fff6c;
 
-  --cell-color: darkseagreen;
-  --cell-over-color: darkslategrey;
+  --cell-color: burlywood;
+  --cell-over-color: #a78962;
   --cell-select-color: var(--main-text-color);
 
   --border-radius-size: 0.3rem;
@@ -248,6 +248,9 @@ body {
 
 .meal {
   cursor: grab;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position: center;
 }
 
 .cell-over {
@@ -312,8 +315,7 @@ img.character {
 }
 
 .select-cell {
-  outline: var(--inventory-gap) solid var(--cell-select-color);
-  outline-offset: calc(-1 * var(--inventory-gap));
+  box-shadow: inset 0px 0px 0.05rem var(--inventory-gap) cornsilk;
 }
 
 progress::-moz-progress-bar {
