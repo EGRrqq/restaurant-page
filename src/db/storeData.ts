@@ -1,29 +1,29 @@
 import { mealCell } from "../inventory/cells";
 
 import {
-  cake,
-  burger,
-  icecream,
-  cookies,
-  nachos,
-  meat,
-  corn,
-  taco,
-  pizza,
-  candy,
+  puke_1,
+  puke_2,
+  puke_3,
+  puke_4,
+  puke_5,
+  taste_1,
+  taste_2,
+  taste_3,
+  taste_4,
+  taste_5,
 } from "../../public/icons";
 
 const meals = [
-  new mealCell(cake, +15),
-  new mealCell(burger, +30),
-  new mealCell(nachos, -25),
-  new mealCell(icecream, +15),
-  new mealCell(cookies, -30),
-  new mealCell(meat, +30),
-  new mealCell(corn, +15),
-  new mealCell(taco, -25),
-  new mealCell(pizza, +30),
-  new mealCell(candy, -15),
+  new mealCell(puke_1, -25),
+  new mealCell(puke_2, -25),
+  new mealCell(puke_3, -25),
+  new mealCell(puke_4, -25),
+  new mealCell(puke_5, -25),
+  new mealCell(taste_1, +25),
+  new mealCell(taste_2, +25),
+  new mealCell(taste_3, +25),
+  new mealCell(taste_4, +25),
+  new mealCell(taste_5, +25),
 ]
   .sort(() => Math.random() - 0.5)
   .map((item, i) => item.setPositionIndex(i));
