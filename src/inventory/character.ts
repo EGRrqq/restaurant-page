@@ -1,6 +1,12 @@
 import { getVisitorMeal, getVisitorMeals } from "../db";
 import { emptyCell } from "./cells";
-import { getEatSound, getMeowSound } from "./soundController";
+import {
+  getDogBarkSoundEl,
+  getDogHugSoundEl,
+  getDogPantingSoundEl,
+  getEatSound,
+  setFoodReactionSound,
+} from "./soundController";
 
 const getCharacter = () => document.querySelector(".character-wrapper");
 const getProgress = () => document.querySelector("progress");
@@ -16,7 +22,10 @@ function characterDragOver(event: DragEvent) {
 
   if (getProgress().value <= 0 || getProgress().value >= 100) return;
 
-  getMeowSound().play();
+  const getId = () => event.dataTransfer.getData("element/id");
+  getVisitorMeal(getId()).satiety < 0
+    ? getDogBarkSoundEl().play()
+    : getDogPantingSoundEl().play();
 }
 
 function characterDragDrop(event: DragEvent) {
@@ -36,6 +45,10 @@ function characterDragDrop(event: DragEvent) {
   const newCell = new emptyCell();
 
   getEatSound().play();
+  getVisitorMeal(getId()).satiety < 0
+    ? setFoodReactionSound(getDogHugSoundEl())
+    : setFoodReactionSound(getDogPantingSoundEl());
+
   getVisitorMeal(getId()).cell.replaceWith(
     newCell.setPositionIndex(parseInt(initPos)).setAttributes().cell,
   );

@@ -249,7 +249,7 @@ body {
 .meal {
   cursor: grab;
   background-repeat: no-repeat;
-  background-size: 70%;
+  background-size: 78%;
   background-position: center;
 }
 
@@ -315,7 +315,9 @@ img.character {
 }
 
 .select-cell {
-  box-shadow: inset 0px 0px 0.05rem var(--inventory-gap) cornsilk;
+  box-shadow:
+    inset 0px 0px 0 0.09rem var(--warm),
+    inset 0px 0px 0 0.29rem var(--main-text-color);
 }
 
 progress::-moz-progress-bar {

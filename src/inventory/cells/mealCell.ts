@@ -4,7 +4,13 @@ import {
   getVisitorMeal,
   getVisitorMeals,
 } from "../../db";
-import { getEatSound, getSelectSound } from "../soundController";
+import {
+  getDogHugSoundEl,
+  getDogPantingSoundEl,
+  getEatSound,
+  getSelectSound,
+  setFoodReactionSound,
+} from "../soundController";
 import cell from "./cell";
 import emptyCell from "./emptyCell";
 
@@ -49,6 +55,10 @@ export default class mealCell extends cell {
     const getProgress = () => document.querySelector("progress");
 
     if (getProgress().value <= 0 || getProgress().value >= 100) return;
+
+    this.satiety < 0
+      ? setFoodReactionSound(getDogHugSoundEl())
+      : setFoodReactionSound(getDogPantingSoundEl());
 
     getProgress().value += this.satiety;
 
