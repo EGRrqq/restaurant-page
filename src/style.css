@@ -76,6 +76,10 @@ body {
   transition: background-color 0.025s ease-in-out;
 }
 
+.display-none {
+  display: none;
+}
+
 .visually-hidden {
   display: none !important;
   opacity: 0;
@@ -265,9 +269,16 @@ body {
 }
 
 .character-wrapper {
+  position: relative;
+
   display: flex;
   flex: 1;
   place-content: center;
+}
+
+#damage-shader {
+  position: absolute;
+  opacity: 1%;
 }
 
 img.character {

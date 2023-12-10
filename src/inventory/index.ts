@@ -23,7 +23,20 @@ const visitorInventorySt = new inventoryWithItems("visitor", getVisitorMeals)
 const getSwapBtn = () =>
   document.getElementById("swap-btn") as HTMLButtonElement;
 
+const getCharacter = () =>
+  document.getElementById("character") as HTMLImageElement;
+
+const getDamageShader = () =>
+  document.getElementById("damage-shader") as HTMLImageElement;
+
 window.addEventListener("DOMContentLoaded", init);
+window.addEventListener("load", function loadInit() {
+  // to syncronize character with shader
+  getCharacter().classList.remove("display-none");
+  getDamageShader().classList.remove("display-none");
+
+  window.removeEventListener("load", loadInit);
+});
 
 function init() {
   window.addEventListener("resize", sync);

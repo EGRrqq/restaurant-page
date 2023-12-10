@@ -21,6 +21,27 @@ const dogHugSoundEl = new Audio(dogHugSound);
 const dogPantingSoundEl = new Audio(dogPantingSound);
 const dogBarkSoundEl = new Audio(dogBarkSound);
 
+const getDamageShader = () => document.getElementById("damage-shader");
+const getProgress = () =>
+  document.getElementById("saturation") as HTMLProgressElement;
+const getCharacter = () =>
+  document.getElementById("character") as HTMLImageElement;
+
+dogHugSoundEl.addEventListener("play", () => {
+  getDamageShader().style.opacity = "50%";
+  getDamageShader().ariaHidden = "false";
+});
+
+dogHugSoundEl.addEventListener("ended", () => {
+  getDamageShader().style.opacity = "1%";
+  getDamageShader().ariaHidden = "true";
+
+  if (getProgress().value <= 0) {
+    getCharacter().remove();
+    getDamageShader().remove();
+  }
+});
+
 export const getDogHugSoundEl = () => dogHugSoundEl;
 export const getDogPantingSoundEl = () => dogPantingSoundEl;
 export const getDogBarkSoundEl = () => dogBarkSoundEl;

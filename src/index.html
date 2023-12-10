@@ -1,88 +1,78 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Hungry Pet</title>
-  </head>
 
-  <body>
-    <div class="menu-wrapper">
-      <header class="menu-header" data-temp="cold">
-        <ul>
-          <li class="menu-tab">
-            <a href="#quest" draggable="false">quest</a>
-          </li>
-          <li class="menu-tab">
-            <a href="#kitchen" draggable="false">kitchen</a>
-          </li>
-          <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
-        </ul>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Hungry Pet</title>
+</head>
 
-      <main class="menu-content">
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="quest"
-        >
-          <section id="left-menu-section">
-            <ul>
-              <li>The Hungry Pet</li>
-            </ul>
-          </section>
+<body>
+  <div class="menu-wrapper">
+    <header class="menu-header" data-temp="cold">
+      <ul>
+        <li class="menu-tab">
+          <a href="#quest" draggable="false">quest</a>
+        </li>
+        <li class="menu-tab">
+          <a href="#kitchen" draggable="false">kitchen</a>
+        </li>
+        <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
+      </ul>
+    </header>
 
-          <section id="right-menu-section">
-            <details open="">
-              <summary>Description</summary>
-              <span class="details-text-wrapper">
-                Help us! Today is a day off and our restaurant is full of
-                customers. Please feed our animal any food you can find in the
-                kitchen. But be careful, there's some spoiled food left over.
-                Good luck!
-              </span>
-            </details>
+    <main class="menu-content">
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="quest">
+        <section id="left-menu-section">
+          <ul>
+            <li>The Hungry Pet</li>
+          </ul>
+        </section>
 
-            <details open="">
-              <summary>Objectives</summary>
-              <ol class="details-text-wrapper">
-                <li data-task="not-completed" id="getfood">Get food</li>
-                <li data-task="not-completed" id="feedpet">Feed the pet</li>
-              </ol>
-            </details>
-          </section>
-        </div>
-
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="kitchen"
-        >
-          <button id="swap-btn" disabled></button>
-        </div>
-
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="pet"
-        >
-          <section id="right-menu-section">
-            <span class="character-wrapper">
-              <img
-                src="../public/character/walter_stand_rotation.gif"
-                draggable="false"
-                alt="dog spinning"
-                class="character"
-              />
+        <section id="right-menu-section">
+          <details open="">
+            <summary>Description</summary>
+            <span class="details-text-wrapper">
+              Help us! Today is a day off and our restaurant is full of
+              customers. Please feed our animal any food you can find in the
+              kitchen. But be careful, there's some spoiled food left over.
+              Good luck!
             </span>
+          </details>
 
-            <div class="satiety-wrapper">
-              <label for="saturation">satiety</label>
-              <progress id="saturation" max="100" value="30">30%</progress>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-  </body>
+          <details open="">
+            <summary>Objectives</summary>
+            <ol class="details-text-wrapper">
+              <li data-task="not-completed" id="getfood">Get food</li>
+              <li data-task="not-completed" id="feedpet">Feed the pet</li>
+            </ol>
+          </details>
+        </section>
+      </div>
+
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="kitchen">
+        <button id="swap-btn" disabled></button>
+      </div>
+
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="pet">
+        <section id="right-menu-section">
+          <span class="character-wrapper">
+            <img src="../public/character/walter_stand_shader_rotation.gif" draggable="false"
+              alt="the dog gets hurt because the food is spoiled" class="character display-none" id="damage-shader"
+              aria-hidden="true" />
+
+            <img src="../public/character/walter_stand_rotation.gif" draggable="false" alt="the dog waiting for food"
+              class="character display-none" id="character" />
+          </span>
+
+          <div class="satiety-wrapper">
+            <label for="saturation">satiety</label>
+            <progress id="saturation" max="100" value="30">30%</progress>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+
 </html>
