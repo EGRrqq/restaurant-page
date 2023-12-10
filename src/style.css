@@ -274,7 +274,7 @@ img.character {
   flex: 1;
 
   align-self: center;
-  max-width: 90%;
+  max-width: 80%;
 }
 
 .satiety-wrapper {
@@ -415,7 +415,6 @@ ol.details-text-wrapper {
   }
 
   img.character {
-    max-width: fit-content;
-    min-width: 70%;
+    max-width: 70%;
   }
 }
