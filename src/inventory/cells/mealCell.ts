@@ -1,4 +1,3 @@
-import { walter_lie } from "../../../public/character";
 import {
   getStoreMeals,
   getSwapMeals,
@@ -96,9 +95,11 @@ export default class mealCell extends cell {
       const getCharacter = () =>
         document.getElementById("character") as HTMLImageElement;
 
-      document.getElementById("damage-shader").remove();
-      getCharacter().src = walter_lie;
-      getCharacter().alt = "The dog full, let him rest";
+      const getLieCharacter = () =>
+        document.getElementById("character-lie") as HTMLImageElement;
+
+      getCharacter().style.opacity = "0%";
+      getLieCharacter().style.opacity = "100%";
       document.getElementById("feedpet").dataset.task = "completed";
     }
 

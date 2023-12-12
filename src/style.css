@@ -276,16 +276,32 @@ body {
   place-content: center;
 }
 
-#damage-shader {
+#damage-shader,
+#character-lie {
   position: absolute;
   opacity: 1%;
+}
+
+#steam-particle {
+  position: absolute;
+}
+
+.fade-out {
+  animation-name: fade-out;
+  animation-duration: 2.5s;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(0.9, 0.89, 0.58, 1);
 }
 
 img.character {
   flex: 1;
 
   align-self: center;
-  max-width: 80%;
+  max-width: 78%;
+}
+
+.ease-in-out-transition {
+  transition: opacity 0.5s cubic-bezier(0.14, -0.05, 0.85, 1.04);
 }
 
 .satiety-wrapper {
@@ -426,6 +442,15 @@ ol.details-text-wrapper {
   }
 
   img.character {
-    max-width: 70%;
+    max-width: 68%;
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

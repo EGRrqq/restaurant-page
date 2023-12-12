@@ -1,3 +1,4 @@
+import { walter_lie } from "../../public/character";
 import {
   doorClosingSound,
   doorOpeneningSound,
@@ -26,6 +27,8 @@ const getProgress = () =>
   document.getElementById("saturation") as HTMLProgressElement;
 const getCharacter = () =>
   document.getElementById("character") as HTMLImageElement;
+const getSteamParticle = () =>
+  document.getElementById("steam-particle") as HTMLImageElement;
 
 dogHugSoundEl.addEventListener("play", () => {
   getDamageShader().style.opacity = "50%";
@@ -39,6 +42,37 @@ dogHugSoundEl.addEventListener("ended", () => {
   if (getProgress().value <= 0) {
     getCharacter().remove();
     getDamageShader().remove();
+
+    getSteamParticle().classList.remove("display-none");
+
+    getSteamParticle().addEventListener(
+      "animationstart",
+      function steamParticleInit() {
+        getSteamParticle().ariaHidden = "false";
+        getSteamParticle().alt = "effect of a dog disappearing";
+
+        getSteamParticle().removeEventListener(
+          "animationstart",
+          steamParticleInit,
+        );
+      },
+    );
+
+    getSteamParticle().addEventListener(
+      "animationend",
+      function steamParticleEnd() {
+        getSteamParticle().ariaHidden = "true";
+
+        getSteamParticle().removeEventListener(
+          "animationend",
+          steamParticleEnd,
+        );
+
+        getSteamParticle().remove();
+      },
+    );
+
+    getSteamParticle().classList.add("fade-out");
   }
 });
 

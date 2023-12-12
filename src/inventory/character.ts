@@ -1,4 +1,3 @@
-import { walter_lie } from "../../public/character";
 import { getVisitorMeal, getVisitorMeals } from "../db";
 import { emptyCell } from "./cells";
 import {
@@ -13,6 +12,8 @@ const getCharacterWrapper = () => document.querySelector(".character-wrapper");
 const getProgress = () => document.querySelector("progress");
 const getCharacter = () =>
   document.getElementById("character") as HTMLImageElement;
+const getLieCharacter = () =>
+  document.getElementById("character-lie") as HTMLImageElement;
 
 export function characterInit() {
   getCharacterWrapper().addEventListener("dragover", characterDragOver);
@@ -26,6 +27,9 @@ function characterDragOver(event: DragEvent) {
   if (getProgress().value <= 0 || getProgress().value >= 100) return;
 
   const getId = () => event.dataTransfer.getData("element/id");
+
+  if (getId() === "") return;
+
   getVisitorMeal(getId()).satiety < 0
     ? getDogBarkSoundEl().play()
     : getDogPantingSoundEl().play();
@@ -74,9 +78,8 @@ function characterDragDrop(event: DragEvent) {
       document.getElementById("getfood").dataset.task = "completed";
     }
 
-    document.getElementById("damage-shader").remove();
-    getCharacter().src = walter_lie;
-    getCharacter().alt = "The dog full, let him rest";
+    getCharacter().style.opacity = "0%";
+    getLieCharacter().style.opacity = "100%";
     document.getElementById("feedpet").dataset.task = "completed";
   }
 }

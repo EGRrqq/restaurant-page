@@ -26,14 +26,32 @@ const getSwapBtn = () =>
 const getCharacter = () =>
   document.getElementById("character") as HTMLImageElement;
 
+const getLieCharacter = () =>
+  document.getElementById("character-lie") as HTMLImageElement;
+
 const getDamageShader = () =>
   document.getElementById("damage-shader") as HTMLImageElement;
 
+const getSteamParticle = () =>
+  document.getElementById("steam-particle") as HTMLImageElement;
+
 window.addEventListener("DOMContentLoaded", init);
 window.addEventListener("load", function loadInit() {
-  // to syncronize character with shader
+  // to syncronize characters with shader
   getCharacter().classList.remove("display-none");
   getDamageShader().classList.remove("display-none");
+  getLieCharacter().classList.remove("display-none");
+
+  getLieCharacter().addEventListener("transitionstart", function lieCharEnd() {
+    getCharacter().ariaHidden = "true";
+    getLieCharacter().ariaHidden = "false";
+  });
+
+  getLieCharacter().addEventListener("transitionend", function lieCharEnd() {
+    getCharacter().remove();
+    getDamageShader().remove();
+    getSteamParticle().remove();
+  });
 
   window.removeEventListener("load", loadInit);
 });
