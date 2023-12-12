@@ -29,18 +29,23 @@ const getCharacter = () =>
   document.getElementById("character") as HTMLImageElement;
 const getSteamParticle = () =>
   document.getElementById("steam-particle") as HTMLImageElement;
+const getLieCharacter = () =>
+  document.getElementById("character-lie") as HTMLImageElement;
 
 dogHugSoundEl.addEventListener("play", () => {
+  getDamageShader().style.mixBlendMode = "normal";
   getDamageShader().style.opacity = "50%";
   getDamageShader().ariaHidden = "false";
 });
 
 dogHugSoundEl.addEventListener("ended", () => {
+  getDamageShader().style.mixBlendMode = "hue";
   getDamageShader().style.opacity = "1%";
   getDamageShader().ariaHidden = "true";
 
   if (getProgress().value <= 0) {
     getCharacter().remove();
+    getLieCharacter().remove();
     getDamageShader().remove();
 
     getSteamParticle().classList.remove("display-none");

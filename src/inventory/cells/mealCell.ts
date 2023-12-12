@@ -99,6 +99,7 @@ export default class mealCell extends cell {
         document.getElementById("character-lie") as HTMLImageElement;
 
       getCharacter().style.opacity = "0%";
+      getLieCharacter().style.mixBlendMode = "normal";
       getLieCharacter().style.opacity = "100%";
       document.getElementById("feedpet").dataset.task = "completed";
     }

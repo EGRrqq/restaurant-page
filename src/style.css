@@ -280,6 +280,7 @@ body {
 #character-lie {
   position: absolute;
   opacity: 1%;
+  mix-blend-mode: hue;
 }
 
 #steam-particle {

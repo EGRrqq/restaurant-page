@@ -79,6 +79,7 @@ function characterDragDrop(event: DragEvent) {
     }
 
     getCharacter().style.opacity = "0%";
+    getLieCharacter().style.mixBlendMode = "normal";
     getLieCharacter().style.opacity = "100%";
     document.getElementById("feedpet").dataset.task = "completed";
   }
