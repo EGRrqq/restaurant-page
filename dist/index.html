@@ -1,125 +1,97 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Hungry Pet</title>
-  <script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script><script defer src="tabs.bundle.js"></script><script defer src="inventory.bundle.js"></script><link href="index.css" rel="stylesheet"></head>
 
-  <body>
-    <div class="menu-wrapper">
-      <header class="menu-header" data-temp="cold">
-        <ul>
-          <li class="menu-tab">
-            <a href="#quest" draggable="false">quest</a>
-          </li>
-          <li class="menu-tab">
-            <a href="#kitchen" draggable="false">kitchen</a>
-          </li>
-          <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
-        </ul>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-      <main class="menu-content">
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="quest"
-        >
-          <section id="left-menu-section">
-            <ul>
-              <li>The Hungry Pet</li>
-            </ul>
-          </section>
+  <meta property="og:title" content="The Hungry Pet" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://egrrqq.github.io/The-Hungry-Pet/" />
+  <meta property="og:image"
+    content="https://cdn.jsdelivr.net/gh/EGRrqq/image_hosting@master/THP_assets/walter_stand_rotation.70dz9nuu3rc0.gif" />
+  <meta property="og:image:alt" content="the dog waiting for food" />
+  <meta property="og:description"
+    content="You are standing in front of the entrance to a noisy restaurant and a very poor animal is lying at your feet. A piece of paper next to it says: 'Help us! Today is a day off and our restaurant is full of customers. Please feed our animal any food you can find in the kitchen. But be careful, there's some spoiled food left over. Good luck!'" />
 
-          <section id="right-menu-section">
-            <details open="">
-              <summary>Description</summary>
-              <span class="details-text-wrapper">
-                Help us! Today is a day off and our restaurant is full of
-                customers. Please feed our animal any food you can find in the
-                kitchen. But be careful, there's some spoiled food left over.
-                Good luck!
-              </span>
-            </details>
+  <title>The Hungry Pet</title>
+<script defer src="runtime.bundle.js"></script><script defer src="index.bundle.js"></script><script defer src="tabs.bundle.js"></script><script defer src="inventory.bundle.js"></script><link href="index.css" rel="stylesheet"></head>
 
-            <details open="">
-              <summary>Objectives</summary>
-              <ol class="details-text-wrapper">
-                <li data-task="not-completed" id="getfood">Get food</li>
-                <li data-task="not-completed" id="feedpet">Feed the pet</li>
-              </ol>
-            </details>
-          </section>
-        </div>
+<body>
+  <div class="menu-wrapper">
+    <header class="menu-header" data-temp="cold">
+      <ul>
+        <li class="menu-tab">
+          <a href="#quest" draggable="false">quest</a>
+        </li>
+        <li class="menu-tab">
+          <a href="#kitchen" draggable="false">kitchen</a>
+        </li>
+        <li class="menu-tab"><a href="#pet" draggable="false">pet</a></li>
+      </ul>
+    </header>
 
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="kitchen"
-        >
-          <button id="swap-btn" disabled></button>
-        </div>
+    <main class="menu-content">
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="quest">
+        <section id="left-menu-section">
+          <ul>
+            <li>The Hungry Pet</li>
+          </ul>
+        </section>
 
-        <div
-          class="content-wrapper visually-hidden"
-          aria-hidden="true"
-          id="pet"
-        >
-          <section id="right-menu-section">
-            <span class="character-wrapper">
-              <img
-                src="73455a0aba55e54f708c.gif"
-                draggable="false"
-                alt="steam particle"
-                class="character display-none"
-                id="steam-particle"
-                aria-hidden="true"
-              />
-
-              <img
-                src="a27f52e21e1f3ce368aa.gif"
-                draggable="false"
-                alt="heart particle"
-                class="character display-none"
-                id="heart-particle"
-                aria-hidden="true"
-              />
-
-              <img
-                src="ccd17f6ae225c44bcd6a.gif"
-                draggable="false"
-                alt="the dog gets hurt because the food is spoiled"
-                class="character display-none"
-                id="damage-shader"
-                aria-hidden="true"
-              />
-
-              <img
-                src="6b2548c9f7904cbc063c.gif"
-                draggable="false"
-                alt="the dog waiting for food"
-                class="character display-none ease-in-out-transition"
-                id="character"
-              />
-
-              <img
-                src="24a5879b5ad13c4edf0b.gif"
-                draggable="false"
-                alt="The dog full, let him rest"
-                class="character display-none ease-in-out-transition"
-                id="character-lie"
-                aria-hidden="true"
-              />
+        <section id="right-menu-section">
+          <details open="">
+            <summary>Description</summary>
+            <span class="details-text-wrapper">
+              Help us! Today is a day off and our restaurant is full of
+              customers. Please feed our animal any food you can find in the
+              kitchen. But be careful, there's some spoiled food left over.
+              Good luck!
             </span>
+          </details>
 
-            <div class="satiety-wrapper">
-              <label for="saturation">satiety</label>
-              <progress id="saturation" max="100" value="30">30%</progress>
-            </div>
-          </section>
-        </div>
-      </main>
-    </div>
-  </body>
+          <details open="">
+            <summary>Objectives</summary>
+            <ol class="details-text-wrapper">
+              <li data-task="not-completed" id="getfood">Get food</li>
+              <li data-task="not-completed" id="feedpet">Feed the pet</li>
+            </ol>
+          </details>
+        </section>
+      </div>
+
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="kitchen">
+        <button id="swap-btn" disabled></button>
+      </div>
+
+      <div class="content-wrapper visually-hidden" aria-hidden="true" id="pet">
+        <section id="right-menu-section">
+          <span class="character-wrapper">
+            <img src="73455a0aba55e54f708c.gif" draggable="false" alt="steam particle"
+              class="character display-none" id="steam-particle" aria-hidden="true" />
+
+            <img src="a27f52e21e1f3ce368aa.gif" draggable="false" alt="heart particle"
+              class="character display-none" id="heart-particle" aria-hidden="true" />
+
+            <img src="ccd17f6ae225c44bcd6a.gif" draggable="false"
+              alt="the dog gets hurt because the food is spoiled" class="character display-none" id="damage-shader"
+              aria-hidden="true" />
+
+            <img src="6b2548c9f7904cbc063c.gif" draggable="false" alt="the dog waiting for food"
+              class="character display-none ease-in-out-transition" id="character" />
+
+            <img src="24a5879b5ad13c4edf0b.gif" draggable="false" alt="The dog full, let him rest"
+              class="character display-none ease-in-out-transition" id="character-lie" aria-hidden="true" />
+          </span>
+
+          <div class="satiety-wrapper">
+            <label for="saturation">satiety</label>
+            <progress id="saturation" max="100" value="30">30%</progress>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+
 </html>
