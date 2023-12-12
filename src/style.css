@@ -283,8 +283,13 @@ body {
   mix-blend-mode: hue;
 }
 
-#steam-particle {
+#steam-particle,
+#heart-particle {
   position: absolute;
+}
+
+#heart-particle {
+  animation-timing-function: cubic-bezier(0.96, -0.56, 0.74, 0.05);
 }
 
 .fade-out {

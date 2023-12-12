@@ -49,6 +49,7 @@ window.addEventListener("load", function loadInit() {
 
   getLieCharacter().addEventListener("transitionend", function lieCharEnd() {
     getCharacter().remove();
+    getLieCharacter().style.position = "static";
     getDamageShader().remove();
     getSteamParticle().remove();
   });

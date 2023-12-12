@@ -27,10 +27,36 @@ const getProgress = () =>
   document.getElementById("saturation") as HTMLProgressElement;
 const getCharacter = () =>
   document.getElementById("character") as HTMLImageElement;
-const getSteamParticle = () =>
-  document.getElementById("steam-particle") as HTMLImageElement;
 const getLieCharacter = () =>
   document.getElementById("character-lie") as HTMLImageElement;
+
+const getSteamParticle = () =>
+  document.getElementById("steam-particle") as HTMLImageElement;
+const getHeartParticle = () =>
+  document.getElementById("heart-particle") as HTMLImageElement;
+
+dogPantingSoundEl.addEventListener("play", () => {
+  getHeartParticle().classList.remove("display-none");
+
+  getHeartParticle().classList.add("fade-out");
+});
+
+getHeartParticle().addEventListener(
+  "animationstart",
+  function heartParticleInit() {
+    getHeartParticle().ariaHidden = "false";
+    getHeartParticle().alt = "effect of the dog liking the food";
+  },
+);
+
+getHeartParticle().addEventListener(
+  "animationend",
+  function heartParticleEnd() {
+    getHeartParticle().ariaHidden = "true";
+    getHeartParticle().classList.add("display-none");
+    getHeartParticle().classList.remove("fade-out");
+  },
+);
 
 dogHugSoundEl.addEventListener("play", () => {
   getDamageShader().style.mixBlendMode = "normal";
