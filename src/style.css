@@ -397,6 +397,12 @@ summary {
   text-align: center;
 }
 
+/* for webkit */
+summary::marker {
+  display: none;
+  font-size: 0;
+}
+
 details[open] summary::before {
   content: "\25BC";
   min-width: var(--main-font-size);
