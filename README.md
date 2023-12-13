@@ -1,6 +1,19 @@
-# The Hungry Pet
+# Story
 
-[Live Version](https://egrrqq.github.io/The-Hungry-Pet/)
+You are standing in front of the entrance to a noisy restaurant and a very poor animal is lying at your feet. A piece of paper next to it says:
+
+<p align="center"><img src="https://EGRrqq.github.io/Image_hosting/THP_assets/thp_paper_xs.2vf8i2088920.webp" alt="full steam particle effect"></p>
+
+<p align="center">
+<a align="center" target="_blank" href="https://egrrqq.github.io/The-Hungry-Pet/">Live Story</a>
+</p>
+
+## Optional requirement
+
+To fully immerse yourself in the story, it is advisable (but not necessary) to allow background music in your browser.
+
+- firefox: settings -> Privacy & Security -> Autoplay -> Allow Audio and Video
+- chrome: settings -> Privacy and security -> Site settings -> Additional content settings -> Sound -> Sites can play sound
 
 ## Some features
 
@@ -9,7 +22,7 @@
 - Adaptive inventory cells
 - implemented drag and drop, which works only with mouse :\
 - Made sound effects when clicking/dragging
-- Added a background sound with equalizer that depends on the current tab. Only works if autoplay/volume is enabled in browser site settings :\
+- Added a background sound with equalizer that depends on the current tab. Only works if autoplay/volume/sound is enabled in browser site settings :\
 
 ## Assets
 
